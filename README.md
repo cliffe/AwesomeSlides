@@ -22,7 +22,7 @@ Features that AwesomeSlides adds to Reveal:
 
 Most formatting will be ignored.
 
-Put your text in the outline text box (using one the the templates). Not by inserting text via a text box, text will be ignored unless it is outline text or detected as being attribution text.
+Put your text in the outline text box rather than by inserting text via a text box; text will be ignored unless it is outline text or detected as being attribution text.
 
 If you want an image to be used for a background, simply enlarge it.
 
