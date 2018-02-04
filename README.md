@@ -15,6 +15,8 @@ Features that AwesomeSlides adds to Reveal:
 - Automatically adds a feature slide (every X slides) with extra fancy CSS (for example, star feilds, or moving clouds)
 - Resizes text to fit on slides
 
+[You can view example output slides here.](http://z.cliffe.schreuders.org/presentations/slides_out_examples/)
+
 # How to use
 ## 1) Create your slides in LibreOffice
 
