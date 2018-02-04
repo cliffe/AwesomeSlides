@@ -2,16 +2,16 @@
 
 AwesomeSlides makes awesome HTML5/CSS slides (based on Reveal.js) by converting slides made with LibreOffice.
 
-A script "convert-to-awesome.pl" can convert from libreoffice slides (you can simply save powerpoint slides to .odp first), to AwesomeSlides (based on Reveal.js), great looking HTML5-based slides.
+A script "convert-to-awesome.pl" can convert from libreoffice slides (you can simply save Powerpoint slides to .odp first), to AwesomeSlides (based on Reveal.js), great looking HTML5-based slides.
 
 - Supports attribution in slides (for styles, and also for images on the slide)
 - Supports multiple images on a slide, and has CSS styles depending on the number of images on a slide
-- Detects when an image is streached to be a background to a slide
+- Detects when an image is stretched to be a background to a slide
 
 Features that AwesomeSlides adds to Reveal:
 
 - New great style/theme
-- Randomised elements of styling for slides (for example, boarders, colours, etc)
+- Randomised elements of styling for slides (for example, borders, colours, etc)
 - Automatically adds a feature slide (every X slides) with extra fancy CSS (for example, star feilds, or moving clouds)
 - Resizes text to fit on slides
 
