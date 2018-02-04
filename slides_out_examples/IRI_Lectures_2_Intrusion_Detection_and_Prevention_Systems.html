@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Intrusion Detection and Prevention Systems</title>
+
+		<meta name="generator" content="AwesomeSlides converter" />
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		
+		<base target="_blank">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/cliffe.css" id="theme">
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+		
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-background='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/1000000000000D7400000A1A202BB9EB.jpg'>
+					<h1>Intrusion Detection and Prevention Systems</h1>
+
+					
+					<img src="images/leeds-beckett/Leeds_Beckett_University_logo_white.png" class="attribution_image" style="height: 70px; position: absolute; top: 600px; right: 1em; background:none; border:none; box-shadow:none; filter: brightness(0) invert(1);" /><p>Z. Cliffe Schreuders</p>
+					<div class="slide_license">
+						<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img class="attribution_image" alt="Creative Commons License" src="images/licenses/CC BY-SA 88x31.png" style="height: 30px; background:none; border:none; box-shadow:none;" /></a>
+  <a rel="license" href="http://www.gnu.org/licenses/agpl.html"><img class="attribution_image" alt="GNU AGPL License" src="images/licenses/agplv3-155x51_white.png" style="height: 30px; background:none; border:none; box-shadow:none;" /></a><br />
+  <span class="ccsa"\>This content and code (including slides CSS, HTML, and JS) by <a href="http://z.cliffe.schreuders.org/" property="cc:attributionName dct:creator" rel="cc:attributionURL">Z. Cliffe Schreuders</a> is dual licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike v4.0 International License</a> and <a rel="license" href="http://www.gnu.org/licenses/agpl.html">GNU Affero General Public License v3</a>.<br /><br /><a href="https://www.youtube.com/c/ZCliffeSchreuders"><img class="attribution_image" alt="YouTube" src="images/logos/YouTube-logo-light.png" style="height: 30px; background:none; border:none; box-shadow:none;"></a><br />Lecture recordings are published on the VLE and <a href="https://www.youtube.com/c/ZCliffeSchreuders">YouTube</a>.
+					</div>
+
+					<div class="attribution">
+						<img src='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/10000000000000500000000F18A4A92F.png' class='attribution_image'>
+
+						<p>by&#160; <a href="http://z.cliffe.schreuders.org/">Cliffe</a></p> <p>Slides created using AwesomeSlides converter by <a href="http://z.cliffe.schreuders.org/">Z. Cliffe Schreuders</a></p>
+					</div>
+
+				</section>
+				
+				<section> <!-- Detection grouping -->
+				<section>
+					<h2>Detection</h2>
+
+					
+					<ul>
+						<li>In order to respond to an event, we need to detect it</li>
+					</ul><p>Test Your Awareness: Do The Test</p><p><iframe title="YouTube video player" class="youtube-player" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/Ahg6qcgoay4" frameborder="0" allowFullScreen></iframe><p class="youtube-caption"><a href="https://www.youtube.com/watch?v=Ahg6qcgoay4">http://www.youtube.com/watch?v=Ahg6qcgoay4</a></p></p>
+
+
+				</section>
+				<section data-background='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/1000000000000640000004AC97EEC402.png'>
+					<h2>Detection</h2>
+
+					
+					<ul>
+						<li>Because the data is complicated, it helps to automate the process of detecting events</li>
+					</ul>
+
+					<div class="attribution">
+						<img src='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/10000000000000500000000F18A4A92F.png' class='attribution_image'>
+
+						Image <a href="https://www.flickr.com/photos/jurvetson/6858583426/">Tesla Motors Assembly Line</a> by <a href="https://www.flickr.com/people/jurvetson/">jurvetson</a>
+					</div>
+
+				</section>
+				</section>
+
+				<section>
+					<h2>Terminology</h2>
+					<img src='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/10000000000002B300000400FADD3F18.png'>
+
+					
+					<ul>
+						<li>True positive</li>
+						<li>False positive</li>
+						<li>True negative</li>
+						<li>False negative</li>
+						<li>Which are the worst in regards to detection?</li>
+					</ul>
+
+					<div class="attribution">
+						<img src='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/10000000000000500000000F6CA6BE44.png' class='attribution_image'>
+
+						Image <a href="https://www.flickr.com/photos/jjjuuussstttiiinnn/5138121689/">intruder</a> by <a href="https://www.flickr.com/people/jjjuuussstttiiinnn/">?????????????</a>
+					</div>
+
+				</section>
+				<section data-background='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/10000000000006400000042772298FEF.png'>
+					<h2>Intrusion Detection Systems</h2>
+
+					
+					<ul>
+						<li>An intrusion detection system (IDS) monitors activity and produces reports and alerts</li>
+						<li>Network-based IDS does so by watching network traffic (thereby monitoring multiple computers)
+					<ul>
+						<li>This is usually what people think of as IDS</li>
+					</ul></li>
+						<li>Host-based IDS monitors system activity, such as system calls, logs, files, and file metadata (or only local network activity)
+					<ul>
+						<li>There is overlap with other topics such as system call monitoring/interposition, and integrity management</li>
+					</ul></li>
+					</ul>
+
+					<div class="attribution">
+						<img src='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/10000000000000500000000F18A4A92F.png' class='attribution_image'>
+
+						<p>by&#160;<a href="https://www.flickr.com/people/vaenator_irae/">&#160;</a><a href="https://www.flickr.com/people/vaenator_irae/">Hunter McGinnis</a><a href="http://www.imagecodr.org/">&#160;</a></p>
+					</div>
+
+				</section>
+				<section data-background='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/1000000000000400000002ADD235DBD1.png'>
+					<h2>Intrusion Prevention Systems</h2>
+
+					
+					<ul>
+						<li>An intrusion prevention system (IPS), is an IDS that proactively reacts to prevent attacks
+					<ul>
+						<li>For example, resetting a TCP connection (or reconfiguring a firewall) when it looks like an attack is taking place</li>
+					</ul></li>
+						<li>IDS systems may only monitor traffic, but with sufficient processing power it is possible to do something about it (IPS)</li>
+						<li>Also known as an intrusion detection and prevention system (IDPS)</li>
+					</ul>
+
+					<div class="attribution">
+						<img src='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/10000000000000500000000F18A4A92F.png' class='attribution_image'>
+
+						Image <a href="https://www.flickr.com/photos/derekgavey/6091634632/">You have the right to remain silent?</a> by <a href="https://www.flickr.com/people/derekgavey/">derekGavey</a>
+					</div>
+
+				</section>
+				
+				<section> <!-- Network design grouping -->
+				<section data-background='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/10000000000004B40000030015B20E01.png'>
+					<h2>Network design</h2>
+
+					
+					<ul>
+						<li>An IPS is typically placed in-line, so that it can actively respond to the connection
+					<ul>
+						<li>For example, setting firewall rules, or resetting the TCP connection</li>
+					</ul></li>
+						<li>An IDS may be placed anywhere on the network segment, or simply have traffic forwarded to it for it to analyse</li>
+					</ul>
+
+					<div class="attribution">
+						
+						<p><a href="https://www.flickr.com/photos/internetarchivebookimages/14594428230/">Image from page 27 of "Practical enginee</a> from <a href="https://www.flickr.com/people/internetarchivebookimages/">Internet Archive Book Images</a></p>
+					</div>
+
+				</section>
+				<section>
+					<h2>Network design: Small organisation</h2>
+					<img src='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/10000201000003870000022A6BC45006.png'>
+
+					
+
+
+				</section>
+				<section>
+					<h2>Network design: Larger organisation</h2>
+					<img src='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/10000201000003810000022DE7AF3F10.png'>
+
+					
+
+
+				</section>
+				</section>
+
+				<section data-background='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/1000000000000F3000000A2062B4FFE7.png'>
+					<h2>Signature-based detection</h2>
+
+					
+					<ul>
+						<li>Signature-based: A database of signatures is compared to activity or behaviour
+					<ul>
+						<li>String or pattern matching</li>
+					</ul></li>
+						<li>Similar to the way anti-malware looks for known malicious files and processes</li>
+						<li>For example, an SQL injection attack, or a known buffer overflow exploit, or shell code
+					<ul>
+						<li>Contains steps that can be identified</li>
+					</ul></li>
+						<li>Cannot detect novel unknown (zero-day) attacks</li>
+					</ul>
+
+					<div class="attribution">
+						<img src='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/10000000000000500000000F18A4A92F.png' class='attribution_image'>
+
+						Image <a href="https://www.flickr.com/photos/wiertz/4563720850/">Signature</a> by <a href="https://www.flickr.com/people/wiertz/">Wiertz S&#233;bastien</a>
+					</div>
+
+				</section>
+				<section data-background='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/10000000000006400000042BAE138DE3.png'>
+					<h2>Anomaly-based detection</h2>
+
+					
+					<ul>
+						<li>Anomaly-based detection looks for activity or behaviour that is out of the ordinary</li>
+						<li>Statistical anomaly: activity differs from the baseline (heuristics of what normally happens on your network)
+					<ul>
+						<li>For example, different ports, protocols, or bandwidth used</li>
+					</ul></li>
+						<li>Protocol anomaly: traffic that does not conform to the protocol specifications (for example, something on port 80 that is not HTTP)</li>
+					</ul>
+
+					<div class="attribution">
+						<img src='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/10000000000000500000000F18A4A92F.png' class='attribution_image'>
+
+						Image <a href="https://www.flickr.com/photos/istolethetv/8446814775/">1137</a> by <a href="https://www.flickr.com/people/istolethetv/">istolethetv</a>
+					</div>
+
+				</section>
+				<section>
+					<h2>Weaknesses in detection</h2>
+					<img src='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/100000000000040000000300609C087F.png'>
+
+					
+					<ul>
+						<li>There are various ways that attacks can avoid being detected by an IDS</li>
+						<li>Anomaly-based: normal changes in activity can cause false positives</li>
+						<li>Signature-based: must be kept up-to-date</li>
+						<li>If the signature is too specific, the attack can be altered to avoid detection</li>
+						<li>Too much traffic to analyse everything</li>
+						<li>Encryption, alternative encoding, and so on</li>
+						<li>Packet fragmentation...</li>
+					</ul>
+
+					<div class="attribution">
+						<img src='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/10000000000000500000000F6CA6BE44.png' class='attribution_image'>
+
+						Image <a href="https://www.flickr.com/photos/tweek/139509551/">FAIL</a> by <a href="https://www.flickr.com/people/tweek/">Tweek</a>
+					</div>
+
+				</section>
+				<section data-background='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/1000000000000400000004002F737115.png'>
+					<h2>Packet fragmentation</h2>
+
+					
+					<ul>
+						<li>Packet fragmentation enables networks that allow different packet sizes to communicate</li>
+						<li>A large packet can be fragmented into smaller packets, which are reassembled at the destination</li>
+						<li>In the past this has been used to avoid IDS by breaking the content across smaller packets</li>
+						<li>This has been addressed in many modern IDS systems, by doing deeper stateful analysis</li>
+						<li>For example, Fragroute is an evasion tool</li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Limitations</h2>
+					<img src='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/100000000000030000000400EB6819DB.png'>
+
+					
+					<ul>
+						<li>Often cannot tell if an attack was successful, only that it was attempted</li>
+						<li>NIDS can only operate with the network segment it is exposed to</li>
+					</ul>
+
+					<div class="attribution">
+						<img src='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/10000000000000500000000F18A4A92F.png' class='attribution_image'>
+
+						Image <a href="https://www.flickr.com/photos/elzey/6859293283/">Breaking in?</a> by <a href="https://www.flickr.com/people/elzey/">Richard Elzey</a>
+					</div>
+
+				</section>
+				<section data-background='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/10000000000004B00000032022DD8E4B.png'>
+					<h2>Complexity</h2>
+
+					
+					<ul>
+						<li>Lots of rules
+					<ul>
+						<li>Every packet analysed</li>
+						<li>Stateful analysis: packets reassembled and considered in context</li>
+						<li>Protocols examined for complex rules</li>
+						<li>Can require lots of resources to process</li>
+						<li>Complexity also leads to false positives and negatives</li>
+					</ul></li>
+					</ul>
+
+					<div class="attribution">
+						<img src='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/10000000000000500000000F18A4A92F.png' class='attribution_image'>
+
+						Image <a href="https://www.flickr.com/photos/aarongeller/360135019/">Clock- Simplicity vs. Complexity</a> by <a href="https://www.flickr.com/people/aarongeller/">Aaron Geller</a>
+					</div>
+
+				</section>
+				
+				<section> <!-- Snort grouping -->
+				<section data-background='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/10000201000003B30000021047085681.png'>
+					<h2>Snort</h2>
+
+					
+					<ul>
+						<li>Snort is a very popular FOSS IDS (can also be used as an IPS)</li>
+						<li>Simple signature-based rule language</li>
+						<li>Various front-ends are available</li>
+						<li>Other tools share the same rule set</li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Snort</h2>
+					<img src='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/1000020100000321000002193264F8B5.png'>
+
+					
+
+
+				</section>
+				</section>
+
+				
+				<section> <!-- Snort rules grouping -->
+				<section>
+					<h2>Snort rules</h2>
+					<img src='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/10000201000001FA0000011A55D87C8B.png'>
+
+					
+					<ul>
+						<li>Rules are prioritised based on complexity
+					<ul>
+						<li>IP headers</li>
+						<li>TCP headers</li>
+						<li>Application protocol headers</li>
+						<li>Content</li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Snort rules</h2>
+
+					
+					<ul>
+						<li>| action protocol src_IP src_PORT direction dst_IP dst_port (msg:"A message"; sid:number; rev:number; more optional options)</li>
+						<li>| alert tcp any any -&gt; any 80 (msg:"port 80 connection!"; flow: stateless; rev:1;)</li>
+						<li>| alert tcp any any -&gt; any 80 (msg:"looking at top secret stuff"; content:"top secret"; rev:1;)</li>
+						<li>For each rule, if all of the conditions are true the rule is matched, and the action takes place</li>
+					</ul>
+
+
+				</section>
+				<section data-background='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/10000201000003B30000021095D07349.png'>
+					<h2>Snort rules</h2>
+
+					
+					<ul>
+						<li>Actions:
+					<ul>
+						<li>alert, pass, log</li>
+					</ul></li>
+						<li>Protocols:
+					<ul>
+						<li>tcp, udp, icmp</li>
+					</ul></li>
+						<li>Directions:
+					<ul>
+						<li>-&gt;, &lt;&gt;</li>
+					</ul></li>
+						<li>Pattern matching options (slow):
+					<ul>
+						<li>content: Snort pattern matcher</li>
+						<li>pcre: Perl-compatible regexp</li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				<section data-background='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/10000201000003B30000021095D07349.png'>
+					<h2>Snort rules: Classifications</h2>
+
+					<iframe width="900" height="500" src="http://manual.snort.org/node31.html#SECTION00446200000000000000" frameborder="0" allowFullScreen></iframe><p class="iframe-caption"><a href="http://manual.snort.org/node31.html#SECTION00446200000000000000">http://manual.snort.org/node31.html#SECTION00446200000000000000</a></p>
+
+
+				</section>
+				<section data-background='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/10000201000003B30000021095D07349.png'>
+					<h2>Snort rules: Content/payload</h2>
+
+					<iframe width="900" height="500" src="http://manual.snort.org/node32.html#SECTION00450000000000000000" frameborder="0" allowFullScreen></iframe><p class="iframe-caption"><a href="http://manual.snort.org/node32.html#SECTION00450000000000000000">http://manual.snort.org/node32.html#SECTION00450000000000000000</a></p>
+
+
+				</section>
+				</section>
+
+				<section>
+					<h2>Snort alerts</h2>
+
+					
+					<ul>
+						<li>Alerts and logging:
+					<ul>
+						<li>Syslog</li>
+						<li>XML</li>
+						<li>Database</li>
+						<li>Log files</li>
+						<li>With some configuration: network alerts (IM, email, SMS)</li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				
+				<section> <!-- Snort commands grouping -->
+				<section>
+					<h2>Snort commands</h2>
+
+					
+					<ul>
+						<li>Snort can be used as a sniffer:
+					<ul>
+						<li>-v TCP and IP packet header information</li>
+						<li>-d application-layer headers</li>
+						<li>-e data link-layer headers</li>
+						<li>For example: 
+					<ul>
+						<li># binsnort -dev</li>
+					</ul></li>
+						<li>Statistics are displayed once the program is stopped with Ctrl-C</li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Snort commands</h2>
+
+					
+					<ul>
+						<li>Logging:
+					<ul>
+						<li>-l logdirectory</li>
+						<li>-h network : log relative to your network</li>
+						<li>Logs are placed in directories for remote IP addresses</li>
+					</ul></li>
+						<li>IDS (don't log everything, use the config):
+					<ul>
+						<li>-c config_rules_file (snort.conf)</li>
+						<li>Also logs to alert.ids file</li>
+						<li>Snort comes preconfigured with a snort.conf</li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Snort commands</h2>
+					<img src='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/10000201000001FA0000011A55D87C8B.png'>
+
+					
+					<ul>
+						<li>Process a previous capture (from TCPDump, Wireshark, or Snort):
+					<ul>
+						<li>-r networkcapturefile</li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				</section>
+
+				<section>
+					<h2>Snort rule sets</h2>
+
+					
+					<ul>
+						<li>Some free:
+					<ul>
+						<li><a href="http://www.bleedingsnort.com/">http://www.bleedingsnort.com/</a></li>
+					</ul></li>
+						<li>Some free to registered users (with 30 day delay), or pay for up-to-date:
+					<ul>
+						<li><a href="http://www.snort.org/snort-rules/">http://www.snort.org/snort-rules/</a></li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Other Snort tools</h2>
+
+					
+					<ul>
+						<li>Snort can also log in binary modes, which can optimise performance by off-loading logging to a third party process (such as Barnyard), which can for example, write events to a database</li>
+						<li>Pulled_Pork is a Perl script for keeping the Snort rule set up-to-date</li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Monitoring</h2>
+					<img src='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/1000020100000104000000794BAF90C1.png'>
+
+					
+					<ul>
+						<li>Various tools can assist in monitoring sensors</li>
+						<li>GUI/Web interfaces</li>
+						<li>ACARM-ng: Correlates output from sensors</li>
+						<li>Snortsnarf is a Perl script that converts Snort logs into web page reports
+					<ul>
+						<li>Other Perl analysis scripts: SnortALog, Snort_stat</li>
+					</ul></li>
+						<li>ACID is a PHP Web-based Snort analysis</li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Responding</h2>
+
+					
+					<ul>
+						<li>It is up to the person reviewing the logs to make sense of the data
+					<ul>
+						<li>Investigate to determine if a security incident has occurred</li>
+						<li>Report the incident and/or respond to it</li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Other IDS</h2>
+					<img src='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/10000201000001690000012C1F999274.png'>
+					<img src='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/10000201000000D1000000C837181A92.png'>
+
+					
+					<ul>
+						<li>Suricata:
+					<ul>
+						<li>Uses Snort rules</li>
+					</ul></li>
+						<li>Bro: 
+					<ul>
+						<li>FOSS, similar to Snort, with protocol analysis and more complex rule possibilities</li>
+						<li>Can import (convert) Snort rules</li>
+						<li>Popular for researchers</li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Other IDS vendors, Commercial</h2>
+					<img src='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/1000020100000258000000D4729D147B.png'>
+					<img src='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/100002010000042F000000FD7B082C39.png'>
+					<img src='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/100002010000070800000258F757A913.png'>
+					<img src='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/10001B3E0000584E000031B8718DC131.svg'>
+					<img src='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/10000000000001E000000168AA88FDF7.jpg'>
+
+					
+					<ul>
+						<li>Sourcefire: commercial Snort</li>
+						<li>Cisco</li>
+						<li>Juniper Networks</li>
+						<li>IBM</li>
+						<li>McAfee</li>
+						<li>TippingPoint</li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Conclusions</h2>
+
+					
+					<ul>
+						<li>Network monitoring is critical for rasing awareness of what is happening on your networks</li>
+						<li>There are many options, including the FOSS Snort</li>
+						<li>Monitoring rules can be fairly straightforward, but often suffer from false positives and false negatives unless very carefully constructed</li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Recommended reading</h2>
+					<img src='images/IRI_Lectures_2_Intrusion_Detection_and_Prevention_Systems/10000201000001FA0000011A55D87C8B.png'>
+
+					
+					<ul>
+						<li>Free Online Book: Babbin, J.; Biles, S.; Orebaugh, A.D. (2009), Snort Cookbook, O'Reilly Commons <a href="http://commons.oreilly.com/wiki/index.php/Snort_Cookbook">http://commons.oreilly.com/wiki/index.php/Snort_Cookbook</a></li>
+					</ul>
+
+
+				</section>
+
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script src="js/awesomeslides.js"></script>
+
+		<script>
+
+			awesomify({
+				step: 5, // awesomify roughly every 5th background
+			});
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+		</script>
+
+	</body>
+</html>
+

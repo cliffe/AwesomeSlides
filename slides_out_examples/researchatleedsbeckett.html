@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Security and Forensics Research @ Leeds Beckett - Z. Cliffe Schreuders - presentation</title>
+
+		<meta name="author" content="Z. Cliffe Schreuders">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/cliffe.css" id="theme">
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<!--<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>-->
+<!-- <link rel="stylesheet" href="css/print/pdf.css"> -->
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+		
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div id="caption"></div>
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-fancy-background="bg_sky">
+					<h1>Security and Forensics Research @ Leeds Beckett</h1>
+					<small><a href="http://z.cliffe.schreuders.org">Dr Z. Cliffe Schreuders</a></small>
+					
+					<img src="images/leeds-beckett/Leeds_Beckett_University_logo_white.png" 
+					style="height: 70px; position: absolute; bottom: -0.4em; right: 1em; 
+					background:none; border:none; box-shadow:none;
+					filter: brightness(0) invert(1);" />
+					
+					<div class="slide_license">
+						<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" src="images/licenses/CC BY-SA 88x31.png" style="height: 30px; background:none; border:none; box-shadow:none;" /></a>
+						<a rel="license" href="http://www.gnu.org/licenses/agpl.html"><img alt="GNU AGPL License" src="images/licenses/agplv3-155x51.png" style="height: 30px; background:none; border:none; box-shadow:none; filter: brightness(.4);" /></a><br />
+						This content and code by 
+						<a href="http://z.cliffe.schreuders.org/" property="cc:attributionName dct:creator" rel="cc:attributionURL">Z. Cliffe Schreuders</a> 
+						is dual licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike v4.0 International License</a> and <a rel="license" href="http://www.gnu.org/licenses/agpl.html">GNU Affero General Public License v3</a>.
+					</div>
+				</section>
+
+				<section data-background="images/leeds-beckett/leedsbeckett_quad.jpg" class="text_shadow">
+					<section>
+						<h2>Teaching @ Leeds Beckett</h2>
+						<ul>
+							<li>BSc (Hons) Computer Forensics and Security</li>
+							<ul><li>NSS 100% satisfaction</li></ul>
+							<li>MSc Digital Forensics and Security</li>
+							<li>MSc Computer Security</li>
+						</ul>
+					</section>
+					<section>
+						<div>
+							<h2>Teaching Security @ Leeds Beckett</h2>
+							
+							<p>We teach offensive security/ethical hacking (including fuzzing and exploit development), defencive controls and hardening, incident response and investigation</p>
+							
+						</div>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h2>Current research bids</h2>
+						<p>
+							We have won a £640,000 bid (I am the academic lead) to work with West Yorkshire Police on a research collaboration.
+						</p>
+						<iframe data-src="http://mediacentre.leedsbeckett.ac.uk/press-release/new-research-to-fight-cybercrime-gets-police-backing/" width="800" height="400"></iframe>
+						<br />
+						<p><small><a href="http://mediacentre.leedsbeckett.ac.uk/press-release/new-research-to-fight-cybercrime-gets-police-backing/">Press release</a></small></p>
+					</section>
+					<section>
+						<h2>The collaboration</h2>
+						<ul>
+							<li><em>An evidence-based approach to fighting cybercrime from the frontline: improving the effectiveness and efficiency of investigating cyber enabled crime</em></li>
+							<li>All WYP cyber investigation officers will be taught about conducting research, and will conduct research in collaboration with us</li>
+							<li>Dissemination: Papers, a conference, and a documentary video</li>
+						</ul>
+					</section>
+				</section>
+				
+				<section data-fancy-background="bg_stars">
+					<section>
+						<h2>Research group</h2>
+						<p>
+							The Computer Security and Forensics Research Group has a focus on research related to human factors of computer security and forensics mechanisms. This typically involves proposing, designing, developing and evaluating novel technical solutions.
+						</p>
+						<div class="attribution">
+							CSS based on MIT licensed <a href="http://codepen.io/saransh/pen/BKJun">CodePen</a> by <a href="http://codepen.io/saransh/">Saransh Sinha</a>
+						</div>
+					</section>
+					<section>
+						<h2>Research areas</h2>
+						<ul>
+							<li>Access controls and sandboxing</li>
+							<li>Mobile device security</li>
+							<li>Usable security</li>
+							<li>Security education</li>
+							<li>Semantic Web, Micro-transactions, and digital currencies</li>
+							<li>Effective digital forensics</li>
+							<li>FOSS and free culture</li>
+						</ul>
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h2>Call for collaborations</h2>
+						<ul>
+							<li>KTPs with security companies</li>
+							<li>Research bids with academics and industry
+								<ul>
+									<li>I like to get hands-on on interesting projects</li>
+									<li>Also happy to be in supporting roles</li>
+								</ul>
+							</li>
+							<li>I have a long list of project ideas, which could form the basis of bids</li>
+						</ul>
+					</section>
+				</section>
+				
+				<section data-background="images/researchatleedsbeckett/coffee-14330276248_977b0e1db0_o.jpg">
+					<section>
+						<h2>Business card swap</h2>
+						<p>Dr Z Cliffe Schreuders<br />
+						<a href="mailto:c.schreuders@leedsbeckett.ac.uk">c.schreuders@leedsbeckett.ac.uk</a><br />
+						<a href="http://z.cliffe.schreuders.org">http://z.cliffe.schreuders.org</a></p>
+						
+						<div class="attribution">
+							<div about='https://farm3.static.flickr.com/2930/14330276248_632e22a587_m.jpg'>
+							<a href='https://www.flickr.com/photos/akane2011/14330276248/' target='_blank'>
+							&nbsp;coffee lover<a rel='license' href='http://creativecommons.org/licenses/by-sa/2.0/' target='_blank'><img src='images/licenses/CC BY-SA 80x15.png' alt='Creative Commons Creative Commons Attribution-Share Alike 2.0 Generic License' title='Creative Commons Creative Commons Attribution-Share Alike 2.0 Generic License' border='0' align='left'></a> by <a href='https://www.flickr.com/people/akane2011/' target='_blank'> </a><a xmlns:cc='http://creativecommons.org/ns#' rel='cc:attributionURL' property='cc:attributionName' href='https://www.flickr.com/people/akane2011/' target='_blank'>Miss Ichijouji</a><a href='http://www.imagecodr.org/' target='_blank'>&nbsp;</a></div>
+						</div>
+
+					</section>
+				</section>
+				
+				<section>
+					<div class="view"><p class="text3d" style="font-size: 120px;">Questions?</p></div>
+					
+					<div class="attribution" style="top:500px">
+						CSS based on MIT licensed <a href="http://codepen.io/SomnusHermeticus/pen/LVqJmR">CodePen</a> by <a href="http://codepen.io/SomnusHermeticus/">Didier</a>
+					</div>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script src="js/awesomeslides.js"></script>
+		
+		<script>
+                        awesomify({
+                          step: 2, // awesomify roughly every second background
+                        });
+                
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+			
+			Reveal.addEventListener( 'slidechanged', function( event ) {
+				// event.previousSlide, event.currentSlide, event.indexh, event.indexv
+				updateCaption(event.currentSlide);
+
+			} );
+
+			Reveal.addEventListener( 'ready', function( event ) {
+				updateCaption(event.currentSlide);
+			} );
+			
+			function updateCaption( currentSlide ) {
+				// search the slide for attribution divs and display in the main slide caption
+				var attributions = currentSlide.getElementsByClassName('attribution');
+				var captionDiv = document.getElementById('caption');
+				var caption = "";
+				var i;
+				for (i = 0; i < attributions.length; i++) {
+					caption = caption + attributions[i].innerHTML;
+				}
+				captionDiv.innerHTML = caption;
+			}
+
+		</script>
+
+	</body>
+</html>

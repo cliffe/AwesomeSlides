@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:ns1="http://sozi.baierouge.fr"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    id="svg3065"
+    sodipodi:docname="Novo documento 2"
+    viewBox="0 0 105 150"
+    version="1.1"
+    inkscape:version="0.48.1 r9760"
+  >
+  <sodipodi:namedview
+      id="base"
+      bordercolor="#666666"
+      inkscape:pageshadow="2"
+      inkscape:window-y="26"
+      pagecolor="#ffffff"
+      inkscape:showpageshadow="false"
+      inkscape:window-maximized="1"
+      inkscape:zoom="2.5966822"
+      inkscape:window-x="0"
+      inkscape:window-height="739"
+      showgrid="false"
+      borderopacity="1.0"
+      inkscape:current-layer="layer1"
+      inkscape:cx="58.089291"
+      inkscape:cy="76.002288"
+      inkscape:window-width="1280"
+      inkscape:pageopacity="0.0"
+      inkscape:document-units="px"
+  />
+  <g
+      id="layer1"
+      inkscape:label="Camada 1"
+      inkscape:groupmode="layer"
+      transform="translate(0 -902.36)"
+    >
+    <g
+        id="g3056"
+        transform="translate(-334.28 196.7)"
+      >
+      <path
+          id="path3010"
+          d="m369.84 761.08-31.745 7.7715c-5.8264 24.816-3.2237 52.239 5.8396 74.466l30.866 9.0887c2.8735 0.84791 5.6099 2.5171 8.6057 2.5466 2.5544 0.0252 4.9564-1.3451 7.4202-2.0197l46.98-12.865-2.5905-57.606-65.377-21.383zm11.152 13.435 48.473 15.806 1.9319 42.765-40.35 11.021c-11.617-15.314-11.316-52.319-10.055-69.592z"
+          style="stroke:#000000;stroke-width:1.405px;fill:#000000"
+          inkscape:connector-curvature="0"
+      />
+      <path
+          id="path3015"
+          style="stroke:#000000;stroke-width:1px;fill:none"
+          sodipodi:revolution="8"
+          sodipodi:radius="25.839634"
+          d="m355.25-2.4063c-0.026-0.48514 0.64113-0.27438 0.80633-0.043197 0.44768 0.6265-0.10586 1.4235-0.71994 1.6559-1.0984 0.41557-2.2222-0.42961-2.5054-1.4831-0.41562-1.546 0.75426-3.0348 2.2462-3.3549 1.9885-0.42665 3.8528 1.0788 4.2044 3.0093 0.4425 2.4295-1.4031 4.6735-3.7725 5.054-2.8697 0.46084-5.4957-1.7273-5.9035-4.5356-0.48063-3.3095 2.0514-6.3188 5.2988-6.753 3.7492-0.50134 7.1426 2.3754 7.6026 6.0619 0.52268 4.1888-2.6994 7.9668-6.825 8.4521-4.6283 0.54445-8.7913-3.0234-9.3016-7.5882-0.56653-5.0677 3.3474-9.6161 8.3513-10.151 5.5071-0.58886 10.441 3.6714 11.001 9.1144 0.61137 5.9464-3.9953 11.266-9.8776 11.85-6.3858 0.63402-12.091-4.3193-12.7-10.641-0.65679-6.8251 4.6432-12.917 11.404-13.549 7.2644-0.67966 13.742 4.9672 14.399 12.167 0.7026 7.7037-5.2911 14.568-12.93 15.248-8.143 0.72561-15.393-5.615-16.098-13.693-0.74867-8.5823 5.9389-16.219 14.456-16.947 9.0216-0.77179 17.044 6.2628 17.797 15.22 0.79493 9.4609-6.5868 17.87-15.983 18.646-9.9001 0.81812-18.696-6.9107-19.496-16.746-0.84134-10.339 7.2346-19.521 17.509-20.346 10.779-0.86458 20.347 7.5585 21.195 18.272 0.88784 11.218-7.8824 21.173-19.035 22.045-11.657 0.91112-21.999-8.2063-22.894-19.798-0.93443-12.096 8.5302-22.824 20.561-23.744 12.536-0.95775 23.65 8.8541 24.593 21.325 0.98108 12.975-9.1781 24.476-22.088 25.443-13.414 1.0044-25.302-9.502-26.292-22.851-1.0278-13.853 9.8259-26.128 23.614-27.142"
+          transform="matrix(1.3881 0 0 1.3881 -89.54 811.14)"
+          sodipodi:argument="-20.473873"
+          sodipodi:cy="-2.4062874"
+          sodipodi:cx="355.24698"
+          sodipodi:expansion="1"
+          sodipodi:type="spiral"
+          sodipodi:t0="0"
+      />
+      <path
+          id="path3017"
+          d="m401.29 761.24c-7.337-1.9348-14.789 0.35767-19.776 5.3824l34.326 9.0518c-1.8603-6.8302-7.2133-12.499-14.55-14.434z"
+          style="fill:#000000"
+          inkscape:connector-curvature="0"
+      />
+      <rect
+          id="rect3022"
+          style="fill:#000000"
+          transform="matrix(.87519 -.48378 .42164 .90676 0 0)"
+          ry="0"
+          height="65.995"
+          width="1.8047"
+          y="799.46"
+          x="35.029"
+      />
+      <path
+          id="path3026"
+          sodipodi:rx="4.146852"
+          sodipodi:ry="4.146852"
+          style="fill:#000000"
+          sodipodi:type="arc"
+          d="m402.71-31.434c0 2.2902-1.8566 4.1469-4.1469 4.1469-2.2902 0-4.1468-1.8566-4.1468-4.1469 0-2.2902 1.8566-4.1469 4.1468-4.1469s4.1469 1.8566 4.1469 4.1469z"
+          transform="matrix(.71446 0 0 .71446 84.421 731.75)"
+          sodipodi:cy="-31.434252"
+          sodipodi:cx="398.55856"
+      />
+      <rect
+          id="rect3024"
+          ry="0"
+          style="fill:#000000"
+          transform="matrix(-.87519 -.48378 -.42164 .90676 0 0)"
+          height="51.202"
+          width="1.4002"
+          y="424.92"
+          x="-692.18"
+      />
+      <path
+          id="path3028"
+          sodipodi:rx="4.146852"
+          sodipodi:ry="4.146852"
+          style="fill:#000000"
+          sodipodi:type="arc"
+          d="m402.71-31.434c0 2.2902-1.8566 4.1469-4.1469 4.1469-2.2902 0-4.1468-1.8566-4.1468-4.1469 0-2.2902 1.8566-4.1469 4.1468-4.1469s4.1469 1.8566 4.1469 4.1469z"
+          transform="matrix(.53294 0 0 .53294 214.32 735.77)"
+          sodipodi:cy="-31.434252"
+          sodipodi:cx="398.55856"
+      />
+    </g
+    >
+  </g
+  >
+  <metadata
+    >
+    <rdf:RDF
+      >
+      <cc:Work
+        >
+        <dc:format
+          >image/svg+xml</dc:format
+        >
+        <dc:type
+            rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+        />
+        <cc:license
+            rdf:resource="http://creativecommons.org/licenses/publicdomain/"
+        />
+        <dc:publisher
+          >
+          <cc:Agent
+              rdf:about="http://openclipart.org/"
+            >
+            <dc:title
+              >Openclipart</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:publisher
+        >
+        <dc:title
+          >Hypno TV</dc:title
+        >
+        <dc:date
+          >2011-09-19T02:04:33</dc:date
+        >
+        <dc:description
+        />
+        <dc:source
+          >https://openclipart.org/detail/161311/hypno-tv-by-cliparteles</dc:source
+        >
+        <dc:creator
+          >
+          <cc:Agent
+            >
+            <dc:title
+              >cliparteles</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:creator
+        >
+        <dc:subject
+          >
+          <rdf:Bag
+            >
+            <rdf:li
+              >stencil</rdf:li
+            >
+            <rdf:li
+              >tv</rdf:li
+            >
+          </rdf:Bag
+          >
+        </dc:subject
+        >
+      </cc:Work
+      >
+      <cc:License
+          rdf:about="http://creativecommons.org/licenses/publicdomain/"
+        >
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Reproduction"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Distribution"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#DerivativeWorks"
+        />
+      </cc:License
+      >
+    </rdf:RDF
+    >
+  </metadata
+  >
+</svg
+>

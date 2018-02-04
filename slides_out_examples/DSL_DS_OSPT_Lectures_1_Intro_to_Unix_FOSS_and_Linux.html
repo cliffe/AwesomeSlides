@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Unix, Free Open Source Software, and Linux Security</title>
+
+		<meta name="generator" content="AwesomeSlides converter" />
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		
+		<base target="_blank">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/cliffe.css" id="theme">
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+		
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-background='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/100000000000012C00000114934E1746.png'>
+					<h1>Unix, Free Open Source Software, and Linux Security</h1>
+
+					
+					<img src="images/leeds-beckett/Leeds_Beckett_University_logo_white.png" class="attribution_image" style="height: 70px; position: absolute; top: 600px; right: 1em; background:none; border:none; box-shadow:none; filter: brightness(0) invert(1);" /><p>Z. Cliffe Schreuders</p>
+					<div class="slide_license">
+						<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img class="attribution_image" alt="Creative Commons License" src="images/licenses/CC BY-SA 88x31.png" style="height: 30px; background:none; border:none; box-shadow:none;" /></a>
+  <a rel="license" href="http://www.gnu.org/licenses/agpl.html"><img class="attribution_image" alt="GNU AGPL License" src="images/licenses/agplv3-155x51_white.png" style="height: 30px; background:none; border:none; box-shadow:none;" /></a><br />
+  <span class="ccsa"\>This content and code (including slides CSS, HTML, and JS) by <a href="http://z.cliffe.schreuders.org/" property="cc:attributionName dct:creator" rel="cc:attributionURL">Z. Cliffe Schreuders</a> is dual licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike v4.0 International License</a> and <a rel="license" href="http://www.gnu.org/licenses/agpl.html">GNU Affero General Public License v3</a>.<br /><br /><a href="https://www.youtube.com/c/ZCliffeSchreuders"><img class="attribution_image" alt="YouTube" src="images/logos/YouTube-logo-light.png" style="height: 30px; background:none; border:none; box-shadow:none;"></a><br />Lecture recordings are published on the VLE and <a href="https://www.youtube.com/c/ZCliffeSchreuders">YouTube</a>.
+					</div>
+
+					<div class="attribution">
+						
+						<p>Slides created using AwesomeSlides converter by <a href="http://z.cliffe.schreuders.org/">Z. Cliffe Schreuders</a></p>
+					</div>
+
+				</section>
+				<section>
+					<h2>Popular Operating Systems</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/1000020000000461000004CD73738669.png'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/1000020100000200000002001B80DF39.png'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000201000000B2000000AF8ABA9230.png'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000200000001090000013AA1D14F14.png'>
+
+					
+					<ul>
+						<li>Microsoft Windows</li>
+						<li>Apple Macintosh
+					<ul>
+						<li>Based on FreeBSD, NetBSD, NeXTSTEP</li>
+						<li>Unix-based (UNIX 03 certification)</li>
+					</ul></li>
+						<li>Linux
+					<ul>
+						<li>'Unix-like'</li>
+						<li>Free and open source software (FOSS)</li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Unix/Linux Security</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000200000001090000013AA1D14F14.png'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10006A5200000E1C00000E1CD8C57F18.svg'>
+
+					
+					<ul>
+						<li>During this module you will be using Linux extensively</li>
+						<li>In this topic we will cover some history, then dig into some Unix commands and use</li>
+					</ul>
+
+
+				</section>
+				
+				<section> <!-- Why you should care about Unix and Linux grouping -->
+				<section>
+					<h2>Why you should care about Unix and Linux...</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/1000227B00000DA500000C5636186EA0.svg'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10001E9100000E2500001072502A59F7.svg'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10008B2A00002113000018C592C33714.svg'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/100015660000235100002B65120799ED.svg'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10001FC200000D0600001242D5AB20AE.svg'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/100013120000522400007421508450FC.svg'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/1000612200001B7500001F993BD6E871.svg'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10005F7F000019B300001F99DBF2F162.svg'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/1000390F00009BDA00008183DFFEDA69.svg'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10049036000024FE00002EB5FD87E21E.svg'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10001CC100000BB0000010A6049BD264.svg'>
+
+					
+					<ul>
+						<li>It is a mature technology that has proven to be able to scale</li>
+						<li>You can find Linux on:
+					<ul>
+						<li>most servers (all kinds including web servers), most super computers, mobile phones (including the Android kernel), embedded devices, TVs, ereaders, cars, fridges, routers, desktops (Mine! Yours?)</li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Why you should care about Unix and Linux...</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/100002010000021E00000064EC904533.png'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000201000001C20000006E66A77F84.png'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000201000000C8000000C838613A8B.png'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000000000000A0000000A0C22DC873.jpg'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000000000003AD000001E1DE0F8B59.jpg'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/100002010000068F00000380879EE653.png'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/1000020100000286000000B5DE3D8C56.png'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000201000000FA000000FA276E105B.png'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000201000002A800000101227BCD3D.png'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000000000002B20000020B908A1CCD.png'>
+
+					
+					<ul>
+						<li>Most large organisations will have at least some Unix systems, typically servers</li>
+						<li>Many security-related jobs involve Unix</li>
+						<li>Penetration testing is typically conducted from a Linux system due to the large number of available tools</li>
+					</ul>
+
+
+				</section>
+				</section>
+
+				
+				<section> <!-- A short history lesson grouping -->
+				<section>
+					<h2>A short history lesson..</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000000000001AA000001ED009ABD0B.png'>
+
+					
+					<ul>
+						<li>In 1969 the UNIX operating system was created at AT&amp;T Bell Labs</li>
+						<li>Programmed in assembly</li>
+						<li>C was created by Dennis Ritchie (for UNIX)</li>
+						<li>Over time, most of UNIX was rewritten in C</li>
+						<li>Was very popular in academic institutions, they typically received the source code</li>
+					</ul>
+
+					<div class="attribution">
+						
+						<p>Image public domain: <a href="http://commons.wikimedia.org/wiki/File:Dennis_MacAlistair_Ritchie.jpg">http://commons.wikimedia.org/wiki/File:Dennis_MacAlistair_Ritchie.jpg</a></p>
+					</div>
+
+				</section>
+				<section>
+					<h2>A short history lesson..</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10006173000074200000522477853900.svg'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10006173000074200000522477853900.svg'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10006173000074200000522477853900.svg'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10006173000074200000522477853900.svg'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10006173000074200000522477853900.svg'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10006173000074200000522477853900.svg'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10006173000074200000522477853900.svg'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10006173000074200000522477853900.svg'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10006173000074200000522477853900.svg'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10006173000074200000522477853900.svg'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10004CBE00003ABA000044353D182B3D.svg'>
+
+					
+					<ul>
+						<li>Designed for computers with dumb terminals that were shared by many users
+					<ul>
+						<li>Thin clients</li>
+						<li>Analogous to the cloud</li>
+					</ul></li>
+						<li>The security model was based on multiple users sharing the one computer</li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Unix security goals</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/100018850000056700000567EBD23E3B.svg'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/100018850000056700000567EBD23E3B.svg'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/100018850000056700000567EBD23E3B.svg'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/100018850000056700000567EBD23E3B.svg'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/100018850000056700000567EBD23E3B.svg'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/100018850000056700000567EBD23E3B.svg'>
+
+					
+					<ul>
+						<li>Unix was designed for multiple users</li>
+						<li>Protecting users on the system from each other
+					<ul>
+						<li>Including protecting the system resources from users</li>
+						<li>Like most systems from the era, not designed with the Internet in mind</li>
+						<li>However, additional security features have been added over time</li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Unix security</h2>
+
+					
+					<ul>
+						<li>Unix consists of:
+					<ul>
+						<li>an operating system kernel</li>
+						<li>running processes (instances of programs)</li>
+					</ul></li>
+						<li>The kernel provides security features such as:
+					<ul>
+						<li>each process has a separate address space (memory pages)</li>
+						<li>each process is associated with a user account, and restricted according to what the user is allowed to do</li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>A short history lesson..</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000201000003E800000276C4E2DA63.png'>
+
+					
+
+					<div class="attribution">
+						
+						Image GNU Free Documentation License, image by <a href="http://commons.wikimedia.org/wiki/User:Eraserhead1">Eraserhead1</a>, <a href="http://commons.wikimedia.org/wiki/User:Infinity0">Infinity0</a>, <a href="http://commons.wikimedia.org/wiki/User:Sav_vas">Sav_vas</a>
+					</div>
+
+				</section>
+				</section>
+
+				<section>
+					<h2>Single UNIX Specification (SUS)</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/100002000000010F000000468F07A904.png'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/100002000000010F000000468185BB96.gif'>
+
+					
+					<ul>
+						<li>The Open Group is the current owner of the UNIX trademark</li>
+						<li>UNIX no longer refers to a particular operating system</li>
+						<li>SUS is a family of standards that an OS can be certified against to call itself 'Unix'</li>
+						<li>Created by the Open Group and IEEE, maintained by the Austin Group</li>
+						<li>Certification is expensive</li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Unix</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/1000020100000200000002001B80DF39.png'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000200000001090000013AA1D14F14.png'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000201000000B2000000AF8ABA9230.png'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000000000001A9000000DE187F32D5.png'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000000000000FA00000050053C18D9.gif'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000201000002D80000018660CA11FC.png'>
+
+					
+					<ul>
+						<li>Unix certified includes:
+					<ul>
+						<li>Solaris</li>
+						<li>Darwin</li>
+						<li>Mac OS X</li>
+					</ul></li>
+						<li>Unix-like:
+					<ul>
+						<li>Linux</li>
+						<li>FreeBSD</li>
+						<li>OpenBSD</li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				
+				<section> <!-- Richard Stallman (aka grouping -->
+				<section data-background='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000000000001890000012AE5B989D2.png'>
+					<h2>Richard Stallman (aka: rms)...</h2>
+
+					
+					<ul>
+						<li>Free software advocate</li>
+						<li>Founded the Free Software Foundation (FSF)</li>
+					</ul>
+
+					<div class="attribution">
+						
+						<p><a href="http://en.wikipedia.org/wiki/en:GNU_Free_Documentation_License">GNU Free Documentation License</a>, http://commons.wikimedia.org/wiki/File:Richard_Matthew_Stallman.jpeg</p>
+					</div>
+
+				</section>
+				<section>
+					<h2>Richard Stallman (aka: rms)</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/100002010000010E000000D96229CEDB.png'>
+
+					
+					<ul>
+						<li>Released emacs, a text editor, as 'free'</li>
+						<li>Others built on it and created a version in C, and there were issues surrounding the rights Stallman had to the new version (the author allegedly sold the rights to the new code and changed his mind about whether Stallman could use the code)</li>
+						<li>Free software was born...</li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Richard Stallman (aka: rms)</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000201000003E8000003D2D326149F.png'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000201000007D0000007D00BF4C893.png'>
+
+					
+					<ul>
+						<li>Pioneered copyleft</li>
+						<li>Main author of the GPL license
+					<ul>
+						<li>Right to share</li>
+						<li>Right to modify</li>
+						<li>Right to share modifications</li>
+						<li>Copyleft: any modifications to the source code must also be licensed under the GPL</li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				</section>
+
+				<section>
+					<h2>RMS and GNU</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000201000003E8000003D2D326149F.png'>
+
+					
+					<ul>
+						<li>GNU (GNU is Not Unix)</li>
+						<li>Founded in 1983</li>
+						<li>A free Unix-like system</li>
+						<li>Written from scratch</li>
+						<li>Was missing a kernel </li>
+						<li>(GNU Hurd was incomplete)</li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Linus Torvalds</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/1000000000000187000002587B664974.png'>
+
+					
+					<ul>
+						<li>&#8220;I'm doing a (free) operating system (just a hobby, won't be big and professional like gnu) for 386(486) AT clones&#8221;
+					<ul>
+&#8211; 1991 post to comp.os.minix newsgroup					</ul></li>
+						<li>Creator, chief architect, and coordinator of the Linux kernel</li>
+					</ul>
+
+					<div class="attribution">
+						
+						<p><a href="http://en.wikipedia.org/wiki/en:GNU_Free_Documentation_License">GNU Free Documentation License</a>, http://en.wikipedia.org/wiki/File:Linus_Torvalds.jpeg</p>
+					</div>
+
+				</section>
+				<section>
+					<h2>GNU/Linux</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000200000001090000013AA1D14F14.png'>
+
+					
+					<ul>
+						<li>GPL licensed</li>
+						<li>Very large developer community</li>
+						<li>Now supports a very large range of devices</li>
+					</ul>
+
+
+				</section>
+				
+				<section> <!-- GNU/Linux Distributions grouping -->
+				<section>
+					<h2>GNU/Linux Distributions</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/100000000000012C00000114934E1746.png'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/1000000000000116000000F735F9FC07.png'>
+
+					
+					<ul>
+						<li>Combining GNU with the Linux kernel produced a completely free Unix-like system</li>
+						<li>Known as GNU/Linux, or just 'Linux' (although, rms hates that)</li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>GNU/Linux Distributions</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/100000000000012C00000114934E1746.png'>
+
+					
+					<ul>
+						<li>A Linux distribution is typically made up of:
+					<ul>
+						<li>The Linux kernel</li>
+						<li>Software by GNU and others...</li>
+						<li>A package management system, for managing/automating software installs and updates</li>
+						<li>System utilities</li>
+						<li>Applications: web, word processing etc</li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>GNU/Linux Distributions</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/100002010000021C000000F3DB0C86F8.png'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000000000005F9000007DF8846E808.gif'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/1000020100001F4000000A630718C855.png'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000201000009880000031A30D14195.png'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000201000002E8000001DF6D763433.png'>
+
+					
+					<ul>
+						<li>There are free community 'distros', and 'enterprise' distros that are supported</li>
+						<li>In this class we are using openSUSE
+					<ul>
+						<li>German origin</li>
+						<li>Has similarities with Red Hat</li>
+						<li>The gratis version of SUSE</li>
+						<li>Previously owned by Novell</li>
+						<li>In 2011 SUSE was acquired by Attachmate</li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				</section>
+
+				<section>
+					<h2>Some More FOSS Terminology</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000201000007D000000B0CC8A70F2A.png'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000201000003E8000003D2D326149F.png'>
+
+					
+					<ul>
+						<li>Free software &#8211; emphasizes the freedom granted</li>
+						<li>Open source software &#8211; emphasizes the development methodology
+					<ul>
+						<li>In practice much the same thing</li>
+					</ul></li>
+						<li>Free open source software (FOSS) &#8211; neutral terminology</li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Linux</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000000000001900000011AD48B2A69.jpg'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000000000000A0000000500B3E4A3B.jpg'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/100002010000032000000142E66FB09A.png'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000000000000BB00000021340328D6.gif'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000000000001E0000001683F3FEFE4.jpg'>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/100002000000016800000168956E759E.gif'>
+
+					
+					<ul>
+						<li>Large corporations hire programmers to contribute to Linux, including:
+					<ul>
+						<li>IBM</li>
+						<li>Intel</li>
+						<li>Novell</li>
+						<li>Red Hat</li>
+						<li>Oracle</li>
+						<li>Google</li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				
+				<section> <!-- Linux and Security grouping -->
+				<section>
+					<h2>Linux and Security</h2>
+
+					
+					<ul>
+						<li>Based-on Unix discretionary access controls (DAC)
+					<ul>
+						<li>Root user, and ordinary users</li>
+					</ul></li>
+						<li>Linux includes lots of additional security features:
+					<ul>
+						<li>Extended ACLs, Linux capabilities, mandatory access controls (MAC), such as SELinux and AppArmor</li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Linux and Security: Quick Tips</h2>
+
+					
+					<ul>
+						<li>Do:
+					<ul>
+						<li>Install software from trusted repositories</li>
+						<li>Install security updates</li>
+						<li>Encrypt your home directory or disk</li>
+					</ul></li>
+						<li>Don't:
+					<ul>
+						<li>Log in as root</li>
+						<li>Install software or run commands that you don't trust</li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				</section>
+
+				
+				<section> <!-- The Filesystem grouping -->
+				<section>
+					<h2>The Filesystem</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/100000000000007E000001E99AECDA1F.png'>
+
+					
+					<ul>
+						<li>One major difference between Windows and Unix-like systems is the way files are organised</li>
+						<li>Windows:
+					<ul>
+						<li>C:</li>
+						<li>D:</li>
+					</ul></li>
+						<li>Linux:
+					<ul>
+						<li>/</li>
+						<li>/media/USB/ (All &#8220;mounted&#8221; under one root)</li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>The Filesystem</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/10000000000001370000013C719A13AC.png'>
+
+					
+					<ul>
+						<li>Names are case sensitive</li>
+						<li>File extensions are optional</li>
+						<li>Names can be long, and include symbols</li>
+						<li>Everything is a file!</li>
+					</ul>
+
+
+				</section>
+				</section>
+
+				<section>
+					<h2>Filesystem Hierarchy Standard</h2>
+					<img src='images/DSL_DS_OSPT_Lectures_1_Intro_to_Unix_FOSS_and_Linux/100000000000007E000001E99AECDA1F.png'>
+
+					
+					<ul>
+						<li>Filesystem Hierarchy Standard (FHS) defines how the directories (what Windows sometimes refers to as 'folders') and files are organised</li>
+						<li><a href="http://www.pathname.com/fhs/">http://www.pathname.com/fhs/</a></li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Basic Unix command shell</h2>
+
+					
+					<ul>
+						<li>Commands:
+					<ul>
+						<li>ls, cp, mv, cat, echo, cd, mkdir</li>
+						<li>vi / nano, kate / gedit</li>
+					</ul></li>
+						<li>man &#8211; is your friend</li>
+						<li>info: other info, whatis: one-line description</li>
+						<li>--help</li>
+						<li>Command shell-foo: 
+					<ul>
+						<li>Piping between programs, using |</li>
+						<li>Send output of a program to a file, using &gt;</li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Conclusion</h2>
+
+					
+					<ul>
+						<li>Linux/GNU systems are FOSS and Unix-like</li>
+						<li>It is important to learn Linux if you plan to work in the security industry</li>
+						<li>Linux security is based on Unix security, with additional features</li>
+					</ul>
+
+
+				</section>
+
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script src="js/awesomeslides.js"></script>
+
+		<script>
+
+			awesomify({
+				step: 5, // awesomify roughly every 5th background
+			});
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+		</script>
+
+	</body>
+</html>
+

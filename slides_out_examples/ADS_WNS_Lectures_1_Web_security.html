@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Web security</title>
+
+		<meta name="generator" content="AwesomeSlides converter" />
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		
+		<base target="_blank">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/cliffe.css" id="theme">
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+		
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-background='images/ADS_WNS_Lectures_1_Web_security/1000000000000400000002D6E990BCD174241C37.jpg'>
+					<h1>Web security</h1>
+
+					
+					<img src="images/leeds-beckett/Leeds_Beckett_University_logo_white.png" class="attribution_image" style="height: 70px; position: absolute; top: 600px; right: 1em; background:none; border:none; box-shadow:none; filter: brightness(0) invert(1);" /><p>Z. Cliffe Schreuders</p>
+					<div class="slide_license">
+						<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img class="attribution_image" alt="Creative Commons License" src="images/licenses/CC BY-SA 88x31.png" style="height: 30px; background:none; border:none; box-shadow:none;" /></a>
+  <a rel="license" href="http://www.gnu.org/licenses/agpl.html"><img class="attribution_image" alt="GNU AGPL License" src="images/licenses/agplv3-155x51_white.png" style="height: 30px; background:none; border:none; box-shadow:none;" /></a><br />
+  <span class="ccsa"\>This content and code (including slides CSS, HTML, and JS) by <a href="http://z.cliffe.schreuders.org/" property="cc:attributionName dct:creator" rel="cc:attributionURL">Z. Cliffe Schreuders</a> is dual licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike v4.0 International License</a> and <a rel="license" href="http://www.gnu.org/licenses/agpl.html">GNU Affero General Public License v3</a>.<br /><br /><a href="https://www.youtube.com/c/ZCliffeSchreuders"><img class="attribution_image" alt="YouTube" src="images/logos/YouTube-logo-light.png" style="height: 30px; background:none; border:none; box-shadow:none;"></a><br />Lecture recordings are published on the VLE and <a href="https://www.youtube.com/c/ZCliffeSchreuders">YouTube</a>.
+					</div>
+
+					<div class="attribution">
+						<img src='images/ADS_WNS_Lectures_1_Web_security/10000201000000500000000F148848BB2B893F6D.png' class='attribution_image'>
+
+						Image <a href="https://www.flickr.com/photos/ryanwick/3445746455/">Redback</a> by <a href="https://www.flickr.com/people/ryanwick/">Ryan Wick</a> <p>Slides created using AwesomeSlides converter by <a href="http://z.cliffe.schreuders.org/">Z. Cliffe Schreuders</a></p>
+					</div>
+
+				</section>
+				<section data-background='images/ADS_WNS_Lectures_1_Web_security/10000000000004B0000004B044472E59B0090EBA.jpg'>
+					<h2>Web security</h2>
+
+					
+					<ul>
+						<li>As time has gone on, more and more infrastructure has moved to Web-based technologies</li>
+						<li>Web sites / Web apps are very popular</li>
+						<li>Often they are bespoke / customised for organisations</li>
+						<li>Often based on various frameworks and content management systems (CMS)</li>
+						<li>Web apps have particular kinds of security pitfalls, and have become targets of specialised attacks and assessments</li>
+					</ul>
+
+					<div class="attribution">
+						<img src='images/ADS_WNS_Lectures_1_Web_security/10000201000000500000000F148848BB2B893F6D.png' class='attribution_image'>
+
+						Image <a href="https://www.flickr.com/photos/taylar/11145961524/"> Web Sparklers</a> by <a href="https://www.flickr.com/people/taylar/">Ingrid Taylar</a>
+					</div>
+
+				</section>
+				<section>
+					<h2>Web basics</h2>
+					<img src='images/ADS_WNS_Lectures_1_Web_security/10000201000004000000025845CBBE6F1B8DBA08.png'>
+
+					
+					<ul>
+						<li>Three core technologies make up web pages, as they are displayed client side:
+					<ul>
+						<li>HTML</li>
+						<li>CSS</li>
+						<li>Javascript</li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>HTML</h2>
+					<img src='images/ADS_WNS_Lectures_1_Web_security/100002010000020000000200D2D90E67F8B0B227.png'>
+
+					
+					<ul>
+						<li>Hypertext Markup Language (HTML) is the markup language that defines the content of web pages</li>
+					</ul><p>html_code:&lt;!DOCTYPE html&gt;<br />&lt;html&gt;<br /> &lt;head&gt;<br /> &nbsp;&nbsp;&nbsp;&lt;title&gt;This is a title&lt;/title&gt;<br /> &lt;/head&gt;<br /> &lt;body&gt;<br /> &nbsp;&nbsp;&nbsp;&lt;h1&gt;This is a heading&lt;/h1&gt;<br /> &nbsp;&nbsp;&nbsp;&lt;p&gt;Hello world!&lt;/p&gt;<br /> &lt;/body&gt;<br />&lt;/html&gt;</p>
+
+
+				</section>
+				<section>
+					<h2>CSS</h2>
+					<img src='images/ADS_WNS_Lectures_1_Web_security/10000201000007D000000B05330F98327F2A5B19.png'>
+
+					
+					<ul>
+						<li>Cascading Style Sheets (CSS) defines the presentation of (typically) HTML content</li>
+						<li>Inline:</li>
+					</ul><p>css_code:&lt;h1 style="color:red;"&gt;Red heading&lt;/h1&gt;</p><ul text:continue-numbering="true">						<li>Separate style:</li>
+					</ul><p>css_code:&lt;style&gt;<br /> h1 {color: red;}<br />&lt;/style&gt;</p>
+
+
+				</section>
+				<section>
+					<h2>Javascript (JS)</h2>
+					<img src='images/ADS_WNS_Lectures_1_Web_security/10000201000000D50000012C1FD4933FCC722976.png'>
+
+					
+					<ul>
+						<li>Javascript makes web pages interactive</li>
+						<li>All modern web browsers contain a Javascript engine, based on the ECMAScript specification</li>
+						<li>JS is a weakly and dynamically typed programming language</li>
+						<li>Can execute statements in strings at run-time</li>
+						<li>JS can modify the environment/DOM...</li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>JS can alter the Website</h2>
+
+					<iframe width="900" height="500" src="https://jsfiddle.net/tmhaezfo/4/" frameborder="0" allowFullScreen></iframe><p class="iframe-caption"><a href="https://jsfiddle.net/tmhaezfo/4/">https://jsfiddle.net/tmhaezfo/4/</a></p>
+
+
+				</section>
+				<section>
+					<h2>Document Object Model (DOM)</h2>
+					<img src='images/ADS_WNS_Lectures_1_Web_security/10000201000001AC000001BB6C427FA43E91F7D8.png'>
+
+					
+					<ul>
+						<li>HTML document internally modelled and accessed as a tree structure</li>
+						<li>Modifying the DOM alters the website that is rendered</li>
+						<li>JavaScript can add, change, and remove DOM elements and attributes (and CSS styles)</li>
+					</ul>
+
+					<div class="attribution">
+						<img src='images/ADS_WNS_Lectures_1_Web_security/10000201000000500000000FED406975F4FA10D2.png' class='attribution_image'>
+
+						<p><a href="https://en.wikipedia.org/wiki/File:DOM-model.svg">DOM-model by Birger Eriksson</a></p>
+					</div>
+
+				</section>
+				
+				<section> <!-- Web architecture grouping -->
+				<section>
+					<h2>Web architecture</h2>
+					<img src='images/ADS_WNS_Lectures_1_Web_security/10000201000001D4000000CB7AD27601275AD12C.png'>
+
+					
+					<ul>
+						<li>Client/server</li>
+						<li>In the clear (port 80, http://)</li>
+						<li>Encrypted via PKI (port 443, https://)</li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Web architecture</h2>
+
+					
+					<ul>
+						<li>Hypertext Transfer Protocol (HTTP) is a request-response protocol</li>
+						<li>Application layer (on top of TCP)</li>
+						<li>Client (user agent, eg. web browser) connects to server</li>
+						<li>Client makes request
+					<ul>
+						<li>GET /index.html HTTP/1.1</li>
+						<li>Host: www.example.com</li>
+					</ul></li>
+						<li>Server responds...</li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Web architecture</h2>
+
+					
+					<ul>
+						<li>Server responds:
+					<ul>
+						<li>HTTP/1.1 200 OK<br />Date: Mon, 23 May 2005 22:38:34 GMT<br />Server: Apache/1.3.3.7 (Unix) (Red-Hat/Linux)<br />Last-Modified: Wed, 08 Jan 2003 23:11:55 GMT<br />ETag: "3f80f-1b6-3e1cb03b"<br />Content-Type: text/html; charset=UTF-8<br />Content-Length: 138<br />Accept-Ranges: bytes<br />Connection: close<br /><br />&lt;html&gt;<br />&lt;head&gt;&lt;title&gt;An Example Page&lt;/title&gt;&lt;/head&gt;<br />&lt;body&gt;Hello World, this is a very simple HTML document.&lt;/body&gt;<br />&lt;/html&gt;</li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Web architecture</h2>
+					<img src='images/ADS_WNS_Lectures_1_Web_security/10000000000004EE000002BE130B5752DA61683C.png'>
+
+					
+
+
+				</section>
+				<section>
+					<h2>Web architecture</h2>
+
+					
+					<ul>
+						<li>Originally the Web was made up of static HTML pages</li>
+						<li>Web 2.0: interactive websites</li>
+						<li>Code on server side (PHP, Java, etc)</li>
+						<li>Code on client side (Javascript, Flash, etc)</li>
+						<li>Databases are used to store and retrieve data
+					<ul>
+						<li>Typically server side via SQL</li>
+						<li>HTML5 makes it possible to store on the client</li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				</section>
+
+				<section>
+					<h2>Javascript (JS) frameworks</h2>
+
+					
+					<ul>
+						<li>JavaScript libraries, such as jQuery add extra features and ways of coding websites</li>
+						<li>Frameworks such as Angular, React, and Vue.js change the way web apps are developed and drive more logic to the client side (such as GUI/Widget based)</li>
+						<li>Single page webapps rely heavily on JS frameworks</li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Ajax</h2>
+
+					
+					<ul>
+						<li>&#8220;Asynchronous JavaScript And XML&#8221;</li>
+						<li>Enables web pages to change dynamically without reloading the entire page</li>
+						<li>Typically JS is used to make an XMLHttpRequest</li>
+						<li>The resulting response is typically JSON or XML data, which JS receives and then updates the DOM</li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Javascript security</h2>
+
+					
+					<ul>
+						<li>JS can modify the environment/DOM</li>
+						<li>Can only access web resources; not files on the local system, except through user interaction</li>
+						<li>Same-origin policy: scripts from one Web site do not have access to data from other sites</li>
+						<li>Lots can go wrong</li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Content Management Systems (CMS)</h2>
+
+					
+					<ul>
+						<li>CMS are server-side</li>
+						<li>A framework for building websites</li>
+						<li>Wordpress (29% of the Web), Joomla, Drupal, SiteFinity
+					<ul>
+						<li>Most have been written in PHP</li>
+					</ul></li>
+						<li>Designed to enable non-technical people to update content</li>
+						<li>Extendable</li>
+						<li>CMS and extensions can have vulnerabilities</li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>WPScan</h2>
+
+					
+					<ul>
+						<li>Wordpress and it&#8217;s extensions have included critical security vulnerabilities</li>
+						<li>WPScan is a WordPress vulnerability scanner</li>
+						<li>Tests for misconfigurations and vulnerable versions</li>
+					</ul>
+
+
+				</section>
+				
+				<section> <!-- Web services grouping -->
+				<section>
+					<h2>Web services</h2>
+
+					
+					<ul>
+						<li>In addition to web sites / apps, web services are used for machine-to-machine interactions
+					<ul>
+						<li>For example, an interface used to query an online database, which is called by mobile apps and also other websites or software</li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Web services: REST</h2>
+
+					
+					<ul>
+						<li>One of the most common kinds of interfaces are RESTful APIs (based on Representational State Transfer)
+					<ul>
+						<li>Basically make individual requests to a service via standard HTTP methods (GET, PUT, POST, DELETE)</li>
+						<li>Typically content of messages is JSON or XML</li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				</section>
+
+				<section>
+					<h2>Web vulnerabilities</h2>
+
+					
+					<ul>
+						<li>Vulnerabilities in frameworks and CMS</li>
+						<li>Vulnerabilities in bespoke code are common</li>
+						<li>Misplaced trust in the client, server, or users</li>
+						<li>Browser/sandbox implementation errors</li>
+						<li>There are types of security mistakes that are commonly found in websites...</li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Types of Web vulnerabilities</h2>
+					<img src='images/ADS_WNS_Lectures_1_Web_security/10000000000002CF000001811838E44B83A9614C.png'>
+
+					
+					<ul>
+						<li>OWASP Top 10</li>
+						<li><a href="https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf">https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf</a></li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Web proxies</h2>
+					<img src='images/ADS_WNS_Lectures_1_Web_security/100002010000008000000080A18695D643D530FB.png'>
+
+					
+					<ul>
+						<li>Web proxies enable security testing to tamper with the behaviour of clients and servers
+					<ul>
+						<li>Burp suite</li>
+						<li>OWASP ZAP</li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Web vulnerability scanners</h2>
+					<img src='images/ADS_WNS_Lectures_1_Web_security/10000201000003E8000002BC1789FDF510A373B0.png'>
+					<img src='images/ADS_WNS_Lectures_1_Web_security/100002010000008000000080A18695D643D530FB.png'>
+
+					
+					<ul>
+						<li>Many network vulnerability scanners (including Nessus and Nexpose) have Web scanning features</li>
+						<li>Specialist tools also exist for various kinds of website testing (manual and automated):
+					<ul>
+						<li>Burp suite</li>
+						<li>OWASP ZAP</li>
+						<li>w3af (web application attack and audit framework)</li>
+						<li>Nikto</li>
+					</ul></li>
+					</ul>
+
+
+				</section>
+				<section data-background='images/ADS_WNS_Lectures_1_Web_security/10000000000008000000055687201985FA258459.jpg'>
+					<h2>Crawling spiders</h2>
+
+					
+					<ul>
+						<li>Many tools crawl a site to download a copy of web pages and content
+					<ul>
+						<li>Typically configurable: depth, max pages, etc</li>
+					</ul></li>
+						<li>May identify versions of frameworks, interesting content, etc</li>
+					</ul>
+
+					<div class="attribution">
+						<img src='images/ADS_WNS_Lectures_1_Web_security/10000201000000500000000FED406975F4FA10D2.png' class='attribution_image'>
+
+						Image <a href="https://www.flickr.com/photos/marfis75/8178035999/"> web-side ( #cc )</a> by <a href="https://www.flickr.com/people/marfis75/">marfis75</a>
+					</div>
+
+				</section>
+				<section>
+					<h2>Finding vulnerable Web apps</h2>
+
+					
+					<ul>
+						<li>Automated scans may find obvious issues, but manual testing may be required to find less obvious flaws</li>
+						<li>Because detecting coding flaws often involves interacting with the server with malicious code, there is a high risk of some impact on servers (vs other kinds of network scanning)</li>
+						<li>Metasploit Pro and Nexpose both have web scanning features; MSP has more offensive/exploitation capabilities and delivers a payload</li>
+					</ul>
+
+
+				</section>
+				<section>
+					<h2>Conclusion</h2>
+
+					
+					<ul>
+						<li>Web security is of ever-growing importance</li>
+						<li>Many technologies involved: HTTP/S, HTML, CSS, JS, CMS, PHP, Java, REST, ...</li>
+						<li>Automated tools exist to scan for obvious issues</li>
+						<li>More complex issues typically require more sophisticated approaches to testing</li>
+						<li>Awareness of security issues in websites, and testing using web proxies</li>
+					</ul>
+
+
+				</section>
+
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script src="js/awesomeslides.js"></script>
+
+		<script>
+
+			awesomify({
+				step: 5, // awesomify roughly every 5th background
+			});
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+		</script>
+
+	</body>
+</html>
+
