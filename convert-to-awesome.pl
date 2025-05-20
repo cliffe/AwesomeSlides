@@ -1,18 +1,18 @@
 #!/usr/bin/perl
 
-# Copyright 2015 Z. Cliffe Schreuders 
+# Copyright 2015 Z. Cliffe Schreuders
 # http://z.cliffe.schreuders.org
-# 
+#
 # This file is part of AwesomeSlides.
-# 
+#
 # AwesomeSlides is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
 # published by the Free Software Foundation, either version 3 of the
 # License, or (at your option) any later version.
-# 
-# AwesomeSlides is also licensed under a Creative Commons 
+#
+# AwesomeSlides is also licensed under a Creative Commons
 # Attribution-ShareAlike v4.0 International License.
-# 
+#
 # AwesomeSlides is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -40,19 +40,19 @@ foreach my $file (@ARGV) {
 
 sub process_file {
   my ($file) = @_;
-  
+
   print "Processing $file\n";
-  
+
   my $output_slides_src = "./slides_template";
   my $output_slides_dest = "./slides_out";
-  
+
   my $filename_title = $file;
   $filename_title =~ s/\..*//ig;
   $filename_title =~ s/.*Modules \d\d\d\d\///ig;
   $filename_title =~ s/[^A-Za-z0-9-_]/_/ig;
   my $uri_filename_title = uri_encode($filename_title);
-  
-  
+
+
   my $input_slides = "./tmp/$$-$file";
   mkdir $input_slides;
 
@@ -74,26 +74,29 @@ sub process_file {
     my @attribution_image_license;
     my @attribution_text;
     my $extra_text;
-    
+
     # attribution for this script on first slide
     unshift (@attribution_text, '<p>Slides created using AwesomeSlides converter by <a href="http://z.cliffe.schreuders.org/">Z. Cliffe Schreuders</a></p>') if $pagenumber == 1;
-    
+
     # for each frame element on the page
     foreach my $element ($page->findnodes('./draw:frame')) {
       # get the type of element it is (title, etc)
       my $attribute = $element->getAttribute('presentation:class');
-      
+
       if($attribute && $attribute eq "title") {
         $title = $element->findnodes("./draw:text-box")->to_literal;
         if(!$slides_title) {
           $slides_title = $title;
         }
       } elsif($attribute && $attribute eq "outline") {
-      
+
         my $text = $element->findnodes("./draw:text-box");
         my @xml = $text->get_nodelist();
-
-        $outline = build_outline($xml[0]->toString, "embed");
+        if (@xml && defined $xml[0]) {
+            $outline = build_outline($xml[0]->toString, "embed");
+        } else {
+            $outline = ""; # Default to empty if no outline content
+        }
 
       } else {
         my $img = $element->findnodes("./draw:image");
@@ -103,7 +106,7 @@ sub process_file {
           my $img_width = $element->getAttribute('svg:width');
           my $img_src = $xml[0]->getAttribute('xlink:href');
           $img_src =~ s|^Pictures/||ig;
-          
+
           # convert images to a rounded float
           $img_height =~ s/[^0-9.]//ig;
           $img_height = sprintf("%.1f", $img_height);
@@ -123,7 +126,7 @@ sub process_file {
             if($img_height == 0.4 && $img_width == 2.1) {
               # attribution_image (creative commons)
               unshift(@attribution_image_license, $img_src);
-            
+
             } elsif ($img_height == 0.8 && $img_width == 2.3) {
               # drop license image from first page (this is added by a regex for my slides)
               #$slide_license = "<img src='$img_src'>\n" . $slide_license;
@@ -134,11 +137,13 @@ sub process_file {
           }
         # not an image
         } else {
-        
+
           my $text = $element->findnodes("./draw:text-box");
           my @xml = $text->get_nodelist();
-
-          my $more = build_outline($xml[0]->toString, "don't embed");
+          my $more = "";
+          if (@xml && defined $xml[0]) {
+              $more = build_outline($xml[0]->toString, "don't embed");
+          }
 
           if($more =~ /Z. Cliffe Schreuders.*licensed under/) {
             $slide_license .= $more;
@@ -150,7 +155,7 @@ sub process_file {
         }
       }
     }
-    
+
     # create_page
     warn color("cyan"), "Warning: skipping over non-outline text '$extra_text' on page $pagenumber", color("reset") if $extra_text;
     my ($background_html, $attribution_html, $slide_license_html);
@@ -219,7 +224,7 @@ END
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-		
+
 		<base target="_blank">
 
 		<link rel="stylesheet" href="css/reveal.css">
@@ -237,7 +242,7 @@ END
 				document.getElementsByTagName( 'head' )[0].appendChild( link );
 			}
 		</script>
-		
+
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
@@ -299,7 +304,7 @@ END
 
 #   mkdir $output_slides_dest;
   dircopy($output_slides_src, $output_slides_dest) or die "Could not copy framework files to $output_slides_dest: $!";
-  
+
   my $filename = "$output_slides_dest/$filename_title.html";
   # if(-e $filename)
   # {
@@ -319,7 +324,7 @@ END
 sub build_outline {
   my ($xml, $embed) = @_;
   my $html = $xml;
-  
+
   # encode non-ASCII characters
   $html =~ s/([^[\x20-\x7F])/"&#".ord($1).";"/eg;
 
@@ -333,13 +338,13 @@ sub build_outline {
   $html =~ s/text:a/a/ig;
   $html =~ s/xlink://ig;
   $html =~ s/<text:line-break\/>/<br \/>/ig;
-  
+
   # remove spaces before >
   $html =~ s/\s+>/>/ig;
 
   # remove <p> in lists
   $html =~ s/(<li>|<ul>)\s*<p>(\s*.*?\s*)<\/p>/$1$2/ig;
-  
+
   # automatically convert a slide with a single link displayed to an iframe
   if($html !~ m#href="https?://www.youtube.com/watch#) {
       $html =~ s#^(?:\<ul>|</ul>|<span>|</span>|<p>|</p>|<li>|</li>|<br />)*<a href="(https?://[^<]+)">(https?://[^<]+)</a>(?:\<ul>|</ul>|<span>|</span>|<p>|</p>|<li>|</li>|<br />)*$#<iframe width="900" height="500" src="$1" frameborder="0" allowFullScreen></iframe><p class="iframe-caption"><a href="$1">$2</a></p>#ig if $embed eq "embed";
@@ -347,10 +352,10 @@ sub build_outline {
 
   # keep multiple spaces
   $html =~ s/<text:s text:c="(\d+)"\/>/'&nbsp;' x $1/ige;
-  
+
   # remove <text:tab/> etc
   $html =~ s/<\/?text:[a-zA-Z0-9_]*\/?>//ig;
-  
+
   # newline when starting a list
   $html =~ s/<ul>/\n<ul>\n/ig;
   # new lines between points
@@ -360,14 +365,14 @@ sub build_outline {
   $html =~ s/(<\/?ul>)/$tabs\t$1/ig;
 #   # extra tabs for lists within lists
 #   $html =~ s|<li>([^/])<ul>|<li>$1$tabs\t\t<ul>|ig;
-  
+
   # remove spans with no attributes
   $html =~ s/<span>(.*?)<\/span>/$1/ig;
   $html =~ s/<span \/>//ig;
   $html =~ s/<p><\/p>//ig;
   # remove blank bullet points
   $html =~ s/<li>(?:<p \/>)+<\/li>//ig;
-  
+
   # remove empty a (no text)
   $html =~ s/<a href="[^"]*?"><\/a>//ig;
   $html =~ s/<a href="[^"]*?"\s?\/>//ig;
@@ -375,7 +380,7 @@ sub build_outline {
   # university name change
   $html =~ s/Leeds Metropolitan/Leeds Beckett/ig;
   $html =~ s/Leeds Met/Leeds Beckett/ig;
-  
+
   # replace uni name on slide with a logo
   $html =~ s/<ul>\s*Leeds Beckett\s*<\/ul>/<img src="images\/leeds-beckett\/Leeds_Beckett_University_logo_white.png" class="attribution_image" style="height: 70px; position: absolute; top: 600px; right: 1em; background:none; border:none; box-shadow:none; filter: brightness(0) invert(1);" \/>/ig;
 
@@ -386,17 +391,17 @@ sub build_outline {
   <span class="ccsa"\>This content and code (including slides CSS, HTML, and JS) by <a href="http://z.cliffe.schreuders.org/" property="cc:attributionName dct:creator" rel="cc:attributionURL">Z. Cliffe Schreuders</a> is dual licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike v4.0 International License</a> and <a rel="license" href="http://www.gnu.org/licenses/agpl.html">GNU Affero General Public License v3</a>.<br /><br /><a href="https://www.youtube.com/c/ZCliffeSchreuders"><img class="attribution_image" alt="YouTube" src="images/logos/YouTube-logo-light.png" style="height: 30px; background:none; border:none; box-shadow:none;"></a><br />Lecture recordings are published on the VLE and <a href="https://www.youtube.com/c/ZCliffeSchreuders">YouTube</a>.';
   $html =~ s/<p>\s*$old1\s*<\/p>/$new/ig;
   # by removing the p above the below regexp does not also pick up on the attribution text
-  
+
   # add spaces in image attribution, remove p
   $html =~ s/<p>(.*?by)\s?(<a href.*?)<\/p>/Image $1 $2/ig;
-  
+
   # auto embed YouTube videos, when a text link is included (does not consider images with links set)
   if ($embed eq "embed") {
-    my $num_youtube = $html =~ s#<a href="https?://www.youtube.com/watch\?v=(\w+)">([^<]+)</a>#<iframe title="YouTube video player" class="youtube-player" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/$1" frameborder="0" allowFullScreen></iframe><p class="youtube-caption"><a href="https://www.youtube.com/watch?v=$1">$2</a></p>#ig;  
+    my $num_youtube = $html =~ s#<a href="https?://www.youtube.com/watch\?v=(\w+)">([^<]+)</a>#<iframe title="YouTube video player" class="youtube-player" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/$1" frameborder="0" allowFullScreen></iframe><p class="youtube-caption"><a href="https://www.youtube.com/watch?v=$1">$2</a></p>#ig;
     if($num_youtube > 1) {
       warn "Warning: More than one automatically embeded YouTube on the same slide: this is unlikely to look good.";
     }
   }
-  
+
   return $html;
 }
